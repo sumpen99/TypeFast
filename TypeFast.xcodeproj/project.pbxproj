@@ -17,6 +17,7 @@
 		7DB0705C29C8ACBF0077929B /* TypeFastUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0705B29C8ACBF0077929B /* TypeFastUITestsLaunchTests.swift */; };
 		7DB0706B29C8AE4C0077929B /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0706A29C8AE4C0077929B /* LaunchScreenViewController.swift */; };
 		7DB0707229C901AC0077929B /* SixtyModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0707129C901AC0077929B /* SixtyModeViewController.swift */; };
+		7DB0707629C9052D0077929B /* FreeRunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0707529C9052D0077929B /* FreeRunViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		7DB0705B29C8ACBF0077929B /* TypeFastUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeFastUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7DB0706A29C8AE4C0077929B /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		7DB0707129C901AC0077929B /* SixtyModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SixtyModeViewController.swift; sourceTree = "<group>"; };
+		7DB0707529C9052D0077929B /* FreeRunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeRunViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 			children = (
 				7DB0706A29C8AE4C0077929B /* LaunchScreenViewController.swift */,
 				7DB0707129C901AC0077929B /* SixtyModeViewController.swift */,
+				7DB0707529C9052D0077929B /* FreeRunViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 			files = (
 				7DB0703929C8ACBD0077929B /* AppDelegate.swift in Sources */,
 				7DB0707229C901AC0077929B /* SixtyModeViewController.swift in Sources */,
+				7DB0707629C9052D0077929B /* FreeRunViewController.swift in Sources */,
 				7DB0706B29C8AE4C0077929B /* LaunchScreenViewController.swift in Sources */,
 				7DB0703B29C8ACBD0077929B /* SceneDelegate.swift in Sources */,
 			);

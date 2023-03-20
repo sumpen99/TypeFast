@@ -38,10 +38,13 @@
                                             <color key="titleColor" red="0.98823529409999999" green="0.72549019609999998" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <buttonConfiguration key="configuration" style="filled" title="60 SECONDS" cornerStyle="large">
-                                            <fontDescription key="titleFontDescription" style="UICTFontTextStyleCallout"/>
+                                            <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle3"/>
                                             <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseBackgroundColor" cyan="0.0" magenta="0.0" yellow="0.0" black="0.0" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="Yv4-Uq-BqI" kind="show" id="ClQ-3I-3Up"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BnK-wH-o6d">
                                         <rect key="frame" x="0.0" y="115" width="373" height="80"/>
@@ -52,10 +55,13 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="FREE RUN" cornerStyle="large">
-                                            <fontDescription key="titleFontDescription" style="UICTFontTextStyleCallout"/>
+                                            <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle3"/>
                                             <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="hVE-bo-lp7" kind="show" id="sGC-ef-dWM"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -86,6 +92,50 @@
             </objects>
             <point key="canvasLocation" x="417.55725190839695" y="-12.67605633802817"/>
         </scene>
+        <!--Sixty Mode View Controller-->
+        <scene sceneID="EQ2-DW-zVp">
+            <objects>
+                <viewController storyboardIdentifier="GameModeSixty" id="Yv4-Uq-BqI" customClass="SixtyModeViewController" customModule="TypeFast" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yge-No-UTO">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tdl-nl-oVJ">
+                                <rect key="frame" x="10" y="716.33333333333337" width="373" height="51.666666666666629"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="continue"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="T5F-mY-QKk"/>
+                        <color key="backgroundColor" red="0.98823529409999999" green="0.72549019609999998" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="T5F-mY-QKk" firstAttribute="bottom" secondItem="tdl-nl-oVJ" secondAttribute="bottom" constant="50" id="WpR-9o-6wX"/>
+                            <constraint firstItem="tdl-nl-oVJ" firstAttribute="leading" secondItem="T5F-mY-QKk" secondAttribute="leading" constant="10" id="ccq-iy-sah"/>
+                            <constraint firstItem="T5F-mY-QKk" firstAttribute="trailing" secondItem="tdl-nl-oVJ" secondAttribute="trailing" constant="10" id="n2t-KH-qKx"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ICr-y2-pae" colorLabel="IBBuiltInLabel-Red"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eos-oA-HRo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1263" y="-18"/>
+        </scene>
+        <!--Free Run View Controller-->
+        <scene sceneID="PFF-iP-5dd">
+            <objects>
+                <viewController id="hVE-bo-lp7" customClass="FreeRunViewController" customModule="TypeFast" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="X42-OZ-ipf">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="RY2-O1-JUD"/>
+                        <color key="backgroundColor" red="0.98823529409999999" green="0.72549019609999998" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nwN-zH-H9O"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gfR-E7-YTa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2062" y="5"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="nXS-25-eNR">
             <objects>
@@ -103,7 +153,7 @@
             <point key="canvasLocation" x="-299" y="-17"/>
         </scene>
     </scenes>
-    <color key="tintColor" red="0.77647058823529413" green="0.72156862745098038" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
+    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
         <image name="typewriter" width="512" height="512"/>
     </resources>
