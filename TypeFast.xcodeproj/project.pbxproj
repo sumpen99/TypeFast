@@ -16,6 +16,7 @@
 		7DB0705A29C8ACBF0077929B /* TypeFastUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0705929C8ACBF0077929B /* TypeFastUITests.swift */; };
 		7DB0705C29C8ACBF0077929B /* TypeFastUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0705B29C8ACBF0077929B /* TypeFastUITestsLaunchTests.swift */; };
 		7DB0706B29C8AE4C0077929B /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0706A29C8AE4C0077929B /* LaunchScreenViewController.swift */; };
+		7DB0707229C901AC0077929B /* SixtyModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0707129C901AC0077929B /* SixtyModeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		7DB0705929C8ACBF0077929B /* TypeFastUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeFastUITests.swift; sourceTree = "<group>"; };
 		7DB0705B29C8ACBF0077929B /* TypeFastUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeFastUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7DB0706A29C8AE4C0077929B /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
+		7DB0707129C901AC0077929B /* SixtyModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SixtyModeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +101,8 @@
 		7DB0703729C8ACBD0077929B /* TypeFast */ = {
 			isa = PBXGroup;
 			children = (
-				7DB0706D29C8AEF80077929B /* AppFiles */,
+				7DB0704129C8ACBF0077929B /* Assets.xcassets */,
+				7DB0704629C8ACBF0077929B /* Info.plist */,
 				7DB0706C29C8AEAB0077929B /* Delegate */,
 				7DB0706929C8ADF60077929B /* Storyboard */,
 				7DB0706829C8AD7D0077929B /* ViewController */,
@@ -128,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				7DB0706A29C8AE4C0077929B /* LaunchScreenViewController.swift */,
+				7DB0707129C901AC0077929B /* SixtyModeViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -148,15 +152,6 @@
 				7DB0703829C8ACBD0077929B /* AppDelegate.swift */,
 			);
 			path = Delegate;
-			sourceTree = "<group>";
-		};
-		7DB0706D29C8AEF80077929B /* AppFiles */ = {
-			isa = PBXGroup;
-			children = (
-				7DB0704629C8ACBF0077929B /* Info.plist */,
-				7DB0704129C8ACBF0077929B /* Assets.xcassets */,
-			);
-			path = AppFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7DB0703929C8ACBD0077929B /* AppDelegate.swift in Sources */,
+				7DB0707229C901AC0077929B /* SixtyModeViewController.swift in Sources */,
 				7DB0706B29C8AE4C0077929B /* LaunchScreenViewController.swift in Sources */,
 				7DB0703B29C8ACBD0077929B /* SceneDelegate.swift in Sources */,
 			);
