@@ -8,21 +8,13 @@
 import UIKit
 
 class LaunchScreenViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
+    
     @IBOutlet weak var gameModePickerView: UIPickerView!
     var pickerData: [String] = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        gameModePickerView.delegate = self
-        gameModePickerView.dataSource = self
-        pickerData = ["Easy","Medium","Hard","Professional"]
-    }
-    
-    @objc
-    func moveToSixtySecondsViewController(){
-        let controller = storyboard?
-            .instantiateViewController(withIdentifier: "GameModeSixty") as? SixtyModeViewController
-        present(controller!,animated: false,completion: nil)
+        configurePickerView()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
@@ -32,10 +24,17 @@ class LaunchScreenViewController: UIViewController, UIPickerViewDelegate, UIPick
             guard let value = pickerView(
                 gameModePickerView,
                 titleForRow: gameModePickerView.selectedRow(inComponent: 0),
-                forComponent: 0) else { vc?.gameMode = "Hard";return; }
+                forComponent: 0)
+            else { vc?.gameMode = "Easy"; return; }
             
             vc?.gameMode = value
         }
+    }
+    
+    private func configurePickerView(){
+        gameModePickerView.delegate = self
+        gameModePickerView.dataSource = self
+        pickerData = ["Easy","Medium","Hard","Professional"]
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -50,8 +49,15 @@ class LaunchScreenViewController: UIViewController, UIPickerViewDelegate, UIPick
         return pickerData[row]
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        printAny(gameModePickerView.selectedRow(inComponent: 0))
-    }
+    
+    /*@objc
+    func moveToSixtySecondsViewController(){
+        let controller = storyboard?
+            .instantiateViewController(withIdentifier: "GameModeSixty") as? SixtyModeViewController
+        present(controller!,animated: false,completion: nil)
+    }*/
+    
+    /*func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    }*/
     
 }

@@ -19,9 +19,10 @@
 		7DB0707229C901AC0077929B /* SixtyModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0707129C901AC0077929B /* SixtyModeViewController.swift */; };
 		7DB0707629C9052D0077929B /* FreeRunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0707529C9052D0077929B /* FreeRunViewController.swift */; };
 		7DB0707929CA05CF0077929B /* AppExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0707829CA05CF0077929B /* AppExtensions.swift */; };
-		7DB0707B29CA0DE80077929B /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0707A29CA0DE80077929B /* UIViewExtensions.swift */; };
 		7DB0708029CA195C0077929B /* MoveableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0707F29CA195C0077929B /* MoveableTextField.swift */; };
 		7DB0708229CA243B0077929B /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0708129CA243B0077929B /* UIView.swift */; };
+		7DB0708629CB840B0077929B /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0708529CB840B0077929B /* UIViewController.swift */; };
+		7DB0708829CB8FE10077929B /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0708729CB8FE10077929B /* PopUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,9 +59,10 @@
 		7DB0707129C901AC0077929B /* SixtyModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SixtyModeViewController.swift; sourceTree = "<group>"; };
 		7DB0707529C9052D0077929B /* FreeRunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeRunViewController.swift; sourceTree = "<group>"; };
 		7DB0707829CA05CF0077929B /* AppExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppExtensions.swift; sourceTree = "<group>"; };
-		7DB0707A29CA0DE80077929B /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		7DB0707F29CA195C0077929B /* MoveableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveableTextField.swift; sourceTree = "<group>"; };
 		7DB0708129CA243B0077929B /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		7DB0708529CB840B0077929B /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		7DB0708729CB8FE10077929B /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 				7DB0706A29C8AE4C0077929B /* LaunchScreenViewController.swift */,
 				7DB0707129C901AC0077929B /* SixtyModeViewController.swift */,
 				7DB0707529C9052D0077929B /* FreeRunViewController.swift */,
+				7DB0708729CB8FE10077929B /* PopUpViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -171,8 +174,8 @@
 			isa = PBXGroup;
 			children = (
 				7DB0707829CA05CF0077929B /* AppExtensions.swift */,
-				7DB0707A29CA0DE80077929B /* UIViewExtensions.swift */,
 				7DB0708129CA243B0077929B /* UIView.swift */,
+				7DB0708529CB840B0077929B /* UIViewController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -317,10 +320,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7DB0703929C8ACBD0077929B /* AppDelegate.swift in Sources */,
-				7DB0707B29CA0DE80077929B /* UIViewExtensions.swift in Sources */,
 				7DB0707229C901AC0077929B /* SixtyModeViewController.swift in Sources */,
 				7DB0707629C9052D0077929B /* FreeRunViewController.swift in Sources */,
+				7DB0708629CB840B0077929B /* UIViewController.swift in Sources */,
 				7DB0707929CA05CF0077929B /* AppExtensions.swift in Sources */,
+				7DB0708829CB8FE10077929B /* PopUpViewController.swift in Sources */,
 				7DB0706B29C8AE4C0077929B /* LaunchScreenViewController.swift in Sources */,
 				7DB0708029CA195C0077929B /* MoveableTextField.swift in Sources */,
 				7DB0708229CA243B0077929B /* UIView.swift in Sources */,

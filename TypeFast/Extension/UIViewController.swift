@@ -1,8 +1,8 @@
 //
-//  UIViewExtensions.swift
+//  UIViewController.swift
 //  TypeFast
 //
-//  Created by fredrik sundström on 2023-03-21.
+//  Created by fredrik sundström on 2023-03-22.
 //
 
 import UIKit
@@ -51,4 +51,19 @@ extension UIViewController {
     }
     
    
+}
+
+extension UIViewController{
+    
+    func updateConstraintValue(id: String,value: CGFloat){
+        for constraint in view.constraints{
+            if id == constraint.identifier{
+                constraint.constant = value
+            }
+        }
+        
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
+        }
+    }
 }

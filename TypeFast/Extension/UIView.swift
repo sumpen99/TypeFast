@@ -11,11 +11,10 @@ extension UIView{
     
     func updateConstraintValue(id: String,value: CGFloat){
         for constraint in constraints{
+            //printAny(constraint.identifier)
             if id == constraint.identifier{
-                print("\(constraint.identifier)")
                 constraint.constant = value
             }
         }
-        layoutIfNeeded()
     }
 }

@@ -23,12 +23,13 @@ class MoveableTextField: UITextField{
     
     @objc
     func textFieldDidChange(_ textField: UITextField){
-        print("\(frame.origin.y)")
+        //print("\(frame.origin.y)")
     }
     
     func common(){
         originY = frame.origin.y
         originHeight = frame.height
+        layer.cornerRadius = 20
         addTarget(self, action: #selector(textFieldDidChange(_:)),for: .editingChanged)
         
     }
