@@ -18,6 +18,10 @@
 		7DB0706B29C8AE4C0077929B /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0706A29C8AE4C0077929B /* LaunchScreenViewController.swift */; };
 		7DB0707229C901AC0077929B /* SixtyModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0707129C901AC0077929B /* SixtyModeViewController.swift */; };
 		7DB0707629C9052D0077929B /* FreeRunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0707529C9052D0077929B /* FreeRunViewController.swift */; };
+		7DB0707929CA05CF0077929B /* AppExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0707829CA05CF0077929B /* AppExtensions.swift */; };
+		7DB0707B29CA0DE80077929B /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0707A29CA0DE80077929B /* UIViewExtensions.swift */; };
+		7DB0708029CA195C0077929B /* MoveableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0707F29CA195C0077929B /* MoveableTextField.swift */; };
+		7DB0708229CA243B0077929B /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0708129CA243B0077929B /* UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +57,10 @@
 		7DB0706A29C8AE4C0077929B /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		7DB0707129C901AC0077929B /* SixtyModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SixtyModeViewController.swift; sourceTree = "<group>"; };
 		7DB0707529C9052D0077929B /* FreeRunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeRunViewController.swift; sourceTree = "<group>"; };
+		7DB0707829CA05CF0077929B /* AppExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppExtensions.swift; sourceTree = "<group>"; };
+		7DB0707A29CA0DE80077929B /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		7DB0707F29CA195C0077929B /* MoveableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveableTextField.swift; sourceTree = "<group>"; };
+		7DB0708129CA243B0077929B /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +111,8 @@
 		7DB0703729C8ACBD0077929B /* TypeFast */ = {
 			isa = PBXGroup;
 			children = (
+				7DB0707E29CA19410077929B /* View */,
+				7DB0707729CA05B60077929B /* Extension */,
 				7DB0704129C8ACBF0077929B /* Assets.xcassets */,
 				7DB0704629C8ACBF0077929B /* Info.plist */,
 				7DB0706C29C8AEAB0077929B /* Delegate */,
@@ -155,6 +165,24 @@
 				7DB0703829C8ACBD0077929B /* AppDelegate.swift */,
 			);
 			path = Delegate;
+			sourceTree = "<group>";
+		};
+		7DB0707729CA05B60077929B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				7DB0707829CA05CF0077929B /* AppExtensions.swift */,
+				7DB0707A29CA0DE80077929B /* UIViewExtensions.swift */,
+				7DB0708129CA243B0077929B /* UIView.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		7DB0707E29CA19410077929B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7DB0707F29CA195C0077929B /* MoveableTextField.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,9 +317,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				7DB0703929C8ACBD0077929B /* AppDelegate.swift in Sources */,
+				7DB0707B29CA0DE80077929B /* UIViewExtensions.swift in Sources */,
 				7DB0707229C901AC0077929B /* SixtyModeViewController.swift in Sources */,
 				7DB0707629C9052D0077929B /* FreeRunViewController.swift in Sources */,
+				7DB0707929CA05CF0077929B /* AppExtensions.swift in Sources */,
 				7DB0706B29C8AE4C0077929B /* LaunchScreenViewController.swift in Sources */,
+				7DB0708029CA195C0077929B /* MoveableTextField.swift in Sources */,
+				7DB0708229CA243B0077929B /* UIView.swift in Sources */,
 				7DB0703B29C8ACBD0077929B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
