@@ -50,11 +50,6 @@ extension UIViewController {
         view.endEditing(true)
     }
     
-   
-}
-
-extension UIViewController{
-    
     func updateConstraintValue(id: String,value: CGFloat){
         for constraint in view.constraints{
             if id == constraint.identifier{
@@ -66,4 +61,5 @@ extension UIViewController{
             self.view.layoutIfNeeded()
         }
     }
+   
 }
