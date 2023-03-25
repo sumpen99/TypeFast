@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "wordsHard.txt",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

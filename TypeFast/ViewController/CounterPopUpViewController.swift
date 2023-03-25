@@ -1,14 +1,14 @@
 //
-//  PopUpViewController.swift
+//  CounterPopUpViewController.swift
 //  TypeFast
 //
-//  Created by fredrik sundström on 2023-03-22.
+//  Created by fredrik sundström on 2023-03-25.
 //
 
 import UIKit
 
-protocol PopUpDelegate {
-    func popupIsDismissed()
+protocol CounterPopUpDelegate {
+    func counterPopupIsDismissed()
 }
 
 class CounterPopupViewController: UIViewController{
@@ -18,24 +18,13 @@ class CounterPopupViewController: UIViewController{
     static let identifier = "CounterPopupViewController"
     let COUNT_FROM = 3
     var counter: Counter?
-    var delegate: PopUpDelegate?
+    var delegate: CounterPopUpDelegate?
    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCounter()
         updateTimerLabel(withValue: COUNT_FROM)
-        //dialogBoxView.layer.cornerRadius = 6.0
-        //dialogBoxView.layer.borderWidth = 1.2
-        //dialogBoxView.layer.borderColor = UIColor(named: "dialogBoxGray")?.cgColor
-        //let tapGesture = UITapGestureRecognizer(target: self, action: #selector( handleTap(sender:)))
-        //dialogBoxView.addGestureRecognizer(tapGesture)
     }
-    
-    /*@objc
-    private func handleTap(sender: UITapGestureRecognizer){
-        self.dismiss(animated: true)
-        //delegate?.handleAction(action: true)
-    }*/
     
     private func configureCounter(){
         counter = Counter(to: 0,from: 3,step: 1){ currentTime in
@@ -52,10 +41,9 @@ class CounterPopupViewController: UIViewController{
     }
     
     private func closePopup(){
-        //printAny("still counting")
         counterLabel.text = "GO"
         counter = nil
-        delegate?.popupIsDismissed()
+        delegate?.counterPopupIsDismissed()
         dismiss(animated: true,completion: nil)
     }
     
@@ -67,18 +55,16 @@ class CounterPopupViewController: UIViewController{
     }
     
     deinit{
-        //printAny("deinit popup")
+        printAny("deinit popup counter")
         counter?.stop()
         counter = nil
     }
     
     static func showPopup(parentVC: UIViewController){
-        if let popupViewController = UIStoryboard(
-            name: "Main",
-            bundle: nil)
+        if let popupViewController = UIStoryboard(name: "Main",bundle: nil)
             .instantiateViewController(withIdentifier: identifier) as? CounterPopupViewController {
             popupViewController.configureSelf()
-            popupViewController.delegate = parentVC as? PopUpDelegate
+            popupViewController.delegate = parentVC as? CounterPopUpDelegate
             parentVC.present(popupViewController, animated: true)
         }
       }

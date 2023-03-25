@@ -20,11 +20,11 @@ extension UIView{
     }
     
     func fadeIn(
-        duration: TimeInterval = 5.0,
+        duration: TimeInterval = TOTAL_ANSWER_TIME,
         delay: TimeInterval = 0.0,
         _ completion: @escaping ((Bool) -> Void) = {(finished: Bool) -> Void in}) {
             
-        
+        layer.removeAllAnimations()
         UIView.animate(
             withDuration: duration,
             delay: delay,
@@ -37,13 +37,13 @@ extension UIView{
     }
 
     func fadeOut(
-        duration: TimeInterval = 5.0,
+        duration: TimeInterval = TOTAL_ANSWER_TIME,
         delay: TimeInterval = 0.0,
         _ completion: @escaping (Bool) -> Void = {(finished: Bool) -> Void in}) {
             
         isHidden = false
         alpha = 1.0
-            
+        layer.removeAllAnimations()
         UIView.animate(
             withDuration: duration,
             delay: delay,
@@ -55,7 +55,7 @@ extension UIView{
     }
     
     func shrink(
-        duration: TimeInterval = 5.0,
+        duration: TimeInterval = TOTAL_ANSWER_TIME,
         delay: TimeInterval = 0.0,
         completion: @escaping (Bool) -> Void){
         
@@ -69,6 +69,16 @@ extension UIView{
             },
             completion: completion
         )
+    }
+    
+    func pulse(){
+        let animation = CAKeyframeAnimation(keyPath: "transform.scale")
+        animation.values = [1.0, 1.2, 1.0]
+        animation.keyTimes = [0, 0.5, 1]
+        animation.duration = 1.0
+        animation.repeatCount = Float.infinity
+        layer.add(animation, forKey: nil)
+
     }
 
 }

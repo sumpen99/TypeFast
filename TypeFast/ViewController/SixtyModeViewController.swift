@@ -7,25 +7,21 @@
 
 import UIKit
 
-class SixtyModeViewController : UIViewController,PopUpDelegate,UITextFieldDelegate{
+class SixtyModeViewController : GameModeViewController,CounterPopUpDelegate,EndOfGamePopUpDelegate,UITextFieldDelegate{
     
+    @IBOutlet weak var pulseLabel: UIImageView!
     @IBOutlet weak var timeLeftLabel: UILabel!
     @IBOutlet weak var userPointsLabel: UILabel!
     @IBOutlet weak var wordToTypeLabel: UILabel!
     @IBOutlet weak var startNewGameButton: UIButton!
     @IBOutlet weak var userInputTextview: UITextField!
-    
-    var gameMode : String = ""
     var counter: Counter?
     override func viewDidLoad() {
         super.viewDidLoad()
-        if(counter != nil){ printAny("not nil")}
         configureTopMenu()
         configureTextfield()
-        //configureTimeLeftLabel()
-        //configureUserPointsLabel()
-        //configureWordToTypelabel()
-        configureStartNewGameButton()
+        startNewGameButton.addTarget(self, action: #selector(showCountDownPopUp), for: .touchUpInside)
+        wordModel = WordModel(level: player.level)
     }
     
     private func configureTextfield(){
@@ -34,31 +30,11 @@ class SixtyModeViewController : UIViewController,PopUpDelegate,UITextFieldDelega
         userInputTextview.delegate = self
     }
     
-    /*private func configureWordToTypelabel(){
-        /*wordToTypeLabel.fadeOut(completion: {
-                (finished: Bool) -> Void in
-            self.wordToTypeLabel.fadeIn()
-        })*/
-        wordToTypeLabel.shrink(completion: currentWordTimeEnded)
-    }*/
-    
-    /*private func configureTimeLeftLabel(){
-        timeLeftLabel.text = "60"
-    }
-    
-    private func configureUserPointsLabel(){
-        userPointsLabel.text = ""
-    }*/
-    
     private func configureCounter(){
-        counter = Counter(to: 0,from: 60,step: 1){ currentTime in
+        counter = Counter(to: 0,from: Double(TOTAL_GAME_TIME),step: 1){ currentTime in
             self.updateTimeLeftLabel(withValue: Int(currentTime))
         }
         counter?.toggle()
-    }
-    
-    private func configureStartNewGameButton(){
-        startNewGameButton.addTarget(self, action: #selector(showCountDownScreen), for: .touchUpInside)
     }
     
     private func configureTopMenu(){
@@ -70,60 +46,89 @@ class SixtyModeViewController : UIViewController,PopUpDelegate,UITextFieldDelega
                 action: nil
             ),
             UIBarButtonItem(
-                customView:createMenuButton()
+                customView:createButton(title: player.level)
             ),
         ]
         
     }
     
-    private func createMenuButton() -> UIButton{
-        let menuButton = UIButton(frame: CGRect(x:0,y:0,width:100,height:30))
-        //menuButton.addTarget(self, action: #selector(tapFunction), for: .touchUpInside)
-        menuButton.setTitle(gameMode, for: .normal)
-        menuButton.backgroundColor = .lightGray
-        menuButton.layer.cornerRadius = 10
-        return menuButton
-    }
-    
-    private func currentWordTimeEnded(finished: Bool){
-        
-    }
-    
     private func animateWordToType(){
+        wordToTypeLabel.text = wordModel?.getNextWord()
         wordToTypeLabel.fadeOut(){ [weak self] finished in
-            //self?.counter?.stop()
+            guard let strongSelf = self else { return }
+            if(finished){
+                strongSelf.evaluateAnswer()
+            }
         }
-        /*wordToTypeLabel.shrink(){ finished in
-            
-        }*/
-    }
-    
-    
-    private func updateTimeLeftLabel(withValue: Int){
-        if(withValue % 10 == 0){
-            self.userInputTextview.isEnabled = false
-            printAny("Times Up")
-            return
-        }
-        timeLeftLabel.text = "\(withValue)"
-        printAny("\(withValue)")
-    }
-    
-    func popupIsDismissed(){
-        configureCounter()
-        animateWordToType()
-        userInputTextview.isHidden = false
-        userInputTextview.becomeFirstResponder()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.text = ""
+        evaluateAnswer()
         return true
     }
     
+    private func evaluateAnswer(){
+        wordToTypeLabel.layer.removeAllAnimations()
+        guard let userText = userInputTextview.text, let wordToType = wordToTypeLabel.text  else { return }
+        player.evaluateAnswer(userText,wordToType: wordToType)
+        updateUserPointsLabel()
+        animateWordToType()
+        userInputTextview.text = ""
+    }
+    
+    private func updateUserPointsLabel(){
+        userPointsLabel.text = player.getCurrentScore()
+    }
+    
+    private func updateTimeLeftLabel(withValue: Int){
+        if(withValue % TOTAL_GAME_TIME == 0){
+            stopCurrentGame()
+            return
+        }
+        timeLeftLabel.text = "\(withValue)"
+    }
+    
+    private func stopCurrentGame(){
+        timeLeftLabel.text = ""
+        removeAnimations()
+        userInputTextview.unActivate()
+        counter?.stop()
+        counter = nil
+        showEndOfGamePopUp()
+    }
+    
+    func counterPopupIsDismissed(){
+        configureCounter()
+        updateUserPointsLabel()
+        userInputTextview.clearAndActivate()
+        timeLeftLabel.text = "\(TOTAL_GAME_TIME)"
+        startAnimations()
+    }
+    
+    func endOfGamePopupIsDismissed() {
+        startNewGameButton.isHidden = false
+        player.resetPlayer()
+        updateUserPointsLabel()
+    }
+    
+    private func startAnimations(){
+        pulseLabel.pulse()
+        animateWordToType()
+    }
+    
+    private func removeAnimations(){
+        wordToTypeLabel.layer.removeAllAnimations()
+        pulseLabel.layer.removeAllAnimations()
+    }
+    
+    func showEndOfGamePopUp(){
+        EndOfGamePopupViewController.showPopup(parentVC: self)
+    }
+    
     @objc
-    func showCountDownScreen(){
+    func showCountDownPopUp(){
         startNewGameButton.isHidden = true
+        wordModel?.loadWords()
         CounterPopupViewController.showPopup(parentVC: self)
     }
     
@@ -137,6 +142,7 @@ class SixtyModeViewController : UIViewController,PopUpDelegate,UITextFieldDelega
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+        removeAnimations()
         counter?.stop()
         counter = nil
         printAny("view is gone")

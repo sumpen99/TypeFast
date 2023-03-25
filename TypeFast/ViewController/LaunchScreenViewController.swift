@@ -18,23 +18,23 @@ class LaunchScreenViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-        if segue.destination is SixtyModeViewController {
-            let vc = segue.destination as? SixtyModeViewController
+        if segue.destination is GameModeViewController {
+            let vc = segue.destination as? GameModeViewController
             
             guard let value = pickerView(
                 gameModePickerView,
                 titleForRow: gameModePickerView.selectedRow(inComponent: 0),
                 forComponent: 0)
-            else { vc?.gameMode = "Easy"; return; }
+            else { vc?.player.level = "Easy"; return; }
             
-            vc?.gameMode = value
+            vc?.player.level = value
         }
     }
     
     private func configurePickerView(){
         gameModePickerView.delegate = self
         gameModePickerView.dataSource = self
-        pickerData = ["Easy","Medium","Hard","Professional"]
+        pickerData = ["Easy","Medium","Hard","Expert"]
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
