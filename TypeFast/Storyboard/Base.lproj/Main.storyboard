@@ -417,7 +417,7 @@
         <!--High Score View Controller-->
         <scene sceneID="K4Q-Fh-vGf">
             <objects>
-                <pageViewController storyboardIdentifier="HighScoreViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="08k-Fy-Xx7" customClass="HighScoreViewController" customModule="TypeFast" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="HighScoreViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="none" id="08k-Fy-Xx7" customClass="HighScoreViewController" customModule="TypeFast" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="40f-wH-7bN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5623" y="7"/>

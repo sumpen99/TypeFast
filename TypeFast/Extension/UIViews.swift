@@ -15,17 +15,50 @@ extension UILabel{
 
 extension HighScoreViewController: UIPageViewControllerDataSource {
  
-    func pageViewController(pageViewController: UIPageViewController,
-        viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        guard let viewControllerIndex = orderedViewControllers.firstIndex(where: {$0 === viewController}) else {
             return nil
+        }
+        
+        let previousIndex = viewControllerIndex - 1
+        // User is on the first view controller and swiped left to loop to
+        // the last view controller.
+        guard previousIndex >= 0 else {
+            return orderedViewControllers.last
+        }
+        
+        guard orderedViewControllers.count > previousIndex else {
+            return nil
+        }
+        
+        return orderedViewControllers[previousIndex]
     }
-    
+
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        guard let viewControllerIndex = orderedViewControllers.firstIndex(where: {$0 === viewController})
+        else {
             return nil
+        }
+        let nextIndex = viewControllerIndex + 1
+        let orderedViewControllersCount = orderedViewControllers.count
+        
+        // User is on the last view controller and swiped right to loop to
+        // the first view controller.
+        guard orderedViewControllersCount != nextIndex else {
+            return orderedViewControllers.first
+        }
+        
+        guard orderedViewControllersCount > nextIndex else {
+            return nil
+        }
+        
+        return orderedViewControllers[nextIndex]
+       
     }
     
-    /*func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
         return orderedViewControllers.count
     }
 
@@ -36,7 +69,7 @@ extension HighScoreViewController: UIPageViewControllerDataSource {
         }
         
         return firstViewControllerIndex
-    }*/
+    }
     
 }
 
