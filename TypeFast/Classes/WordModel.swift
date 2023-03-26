@@ -8,29 +8,28 @@
 class WordModel{
     var wordList = [String]()
     var count = 0
-    var level: String = ""
-    
-    init(level: String){
-        self.level = level
-    }
+    var currentWord: String = ""
     
     func loadWords(){
-        FileHandler.readFile(level){ words in
+        FileHandler.readFile(player.level){ words in
             self.wordList = words
         }
     }
     
+    func clearWordList(){
+        wordList.removeAll()
+    }
+    
     func getNextWord() -> String {
-        var word = ""
         if(count < wordList.count){
-            word = wordList[count]
+            currentWord = wordList[count]
             count += 1
         }
         else{
             reset()
             return getNextWord()
         }
-        return word
+        return currentWord
     }
     
     func reset(){

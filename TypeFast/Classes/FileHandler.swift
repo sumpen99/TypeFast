@@ -23,7 +23,7 @@ class FileHandler{
         let contents = try! String(contentsOfFile: wordPath)
         let lines = contents.components(separatedBy: "\n")
         let shuffledWords = lines.shuffled()
-        let maxWords = min(shuffledWords.count,2)
+        let maxWords = min(shuffledWords.count,WORDS_BUFFER)
         let randomWords = Array(shuffledWords.prefix(maxWords))
         completion?(randomWords)
         /*DispatchQueue.global().async {

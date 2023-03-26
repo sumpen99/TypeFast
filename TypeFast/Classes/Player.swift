@@ -8,11 +8,12 @@
 class Player{
     var name: String = ""
     var level: String = ""
+    var gameMode: String = ""
     var points: Int = 0
     var numTypedWords: Int = 0
     
-    func evaluateAnswer(_ playerAnswer: String,wordToType: String){
-        if playerAnswer == wordToType {
+    func updateScore(_ answerIsCorrect: Bool){
+        if answerIsCorrect {
             points += 1
         }
         else{

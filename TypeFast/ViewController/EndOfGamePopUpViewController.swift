@@ -11,25 +11,40 @@ protocol EndOfGamePopUpDelegate {
     func endOfGamePopupIsDismissed()
 }
 
-class EndOfGamePopupViewController: UIViewController,UITextFieldDelegate{
+class EndOfGamePopupViewController: UIViewController,UITextFieldDelegate, UITableViewDelegate{
+    
     static let identifier = "EndOfGamePopupViewController"
     var delegate: EndOfGamePopUpDelegate?
    
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var nameTextField: UITextField!
-    
     @IBOutlet var dialogBoxView: UIView!
+    let cellReuseIdentifier = "cell"
+    
+    let test = ["1","2","3","4","5","6","1","2","3","4","5","6","1","2","3","4","5","6"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //textfieldBottomConstraint
-        dialogBoxView.layer.cornerRadius = 6.0
-        dialogBoxView.layer.borderWidth = 1.2
-        dialogBoxView.layer.borderColor = UIColor(named: "dialogBoxGray")?.cgColor
+        //dialogBoxView.layer.cornerRadius = 6.0
+        //dialogBoxView.layer.borderWidth = 1.2
+        //dialogBoxView.layer.borderColor = UIColor(named: "dialogBoxGray")?.cgColor
         //let tapGesture = UITapGestureRecognizer(target: self, action: #selector( handleTap(sender:)))
         //dialogBoxView.addGestureRecognizer(tapGesture)
         configureTextfield()
         configureButtons()
+        configureTableView()
+    }
+    
+    private func configureTableView(){
+        gameModel.setTableView(tableView: self.tableView)
+        tableView.delegate = self
+        //tableView.dataSource = gameModel
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        printAny("you tapped cell \(indexPath.row)")
     }
     
     private func configureButtons(){
@@ -55,6 +70,7 @@ class EndOfGamePopupViewController: UIViewController,UITextFieldDelegate{
     }
     
     deinit{
+        gameModel.reset()
         printAny("deinit popup end of game")
     }
     

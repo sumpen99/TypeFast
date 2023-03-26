@@ -19,15 +19,13 @@ class LaunchScreenViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.destination is GameModeViewController {
-            let vc = segue.destination as? GameModeViewController
-            
             guard let value = pickerView(
                 gameModePickerView,
                 titleForRow: gameModePickerView.selectedRow(inComponent: 0),
                 forComponent: 0)
-            else { vc?.player.level = "Easy"; return; }
+            else { player.level = "Easy"; return; }
             
-            vc?.player.level = value
+            player.level = value
         }
     }
     

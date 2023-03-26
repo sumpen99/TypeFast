@@ -18,8 +18,11 @@
 		7D070C3329CF0F9C004BD025 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D070C3229CF0F9C004BD025 /* Player.swift */; };
 		7D070C3729CF1FB5004BD025 /* CounterPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D070C3629CF1FB5004BD025 /* CounterPopUpViewController.swift */; };
 		7D070C3929CF1FFC004BD025 /* EndOfGamePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D070C3829CF1FFC004BD025 /* EndOfGamePopUpViewController.swift */; };
-		7D070C3B29CF39D8004BD025 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D070C3A29CF39D8004BD025 /* UITextView.swift */; };
 		7D070C3D29CF3DFE004BD025 /* GameModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D070C3C29CF3DFE004BD025 /* GameModeViewController.swift */; };
+		7D070C4129CF4F03004BD025 /* UIViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D070C4029CF4F03004BD025 /* UIViews.swift */; };
+		7D070C4929D03CD9004BD025 /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D070C4829D03CD9004BD025 /* WordCell.swift */; };
+		7D21913A29D04824007FEEA0 /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D21913929D04824007FEEA0 /* AppGlobal.swift */; };
+		7D21913C29D04FB8007FEEA0 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D21913B29D04FB8007FEEA0 /* GameModel.swift */; };
 		7DB0703929C8ACBD0077929B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0703829C8ACBD0077929B /* AppDelegate.swift */; };
 		7DB0703B29C8ACBD0077929B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0703A29C8ACBD0077929B /* SceneDelegate.swift */; };
 		7DB0704029C8ACBD0077929B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DB0703E29C8ACBD0077929B /* Main.storyboard */; };
@@ -31,9 +34,6 @@
 		7DB0706B29C8AE4C0077929B /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0706A29C8AE4C0077929B /* LaunchScreenViewController.swift */; };
 		7DB0707229C901AC0077929B /* SixtyModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0707129C901AC0077929B /* SixtyModeViewController.swift */; };
 		7DB0707629C9052D0077929B /* FreeRunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0707529C9052D0077929B /* FreeRunViewController.swift */; };
-		7DB0707929CA05CF0077929B /* AppExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0707829CA05CF0077929B /* AppExtensions.swift */; };
-		7DB0708229CA243B0077929B /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0708129CA243B0077929B /* UIView.swift */; };
-		7DB0708629CB840B0077929B /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0708529CB840B0077929B /* UIViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,8 +65,11 @@
 		7D070C3229CF0F9C004BD025 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		7D070C3629CF1FB5004BD025 /* CounterPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterPopUpViewController.swift; sourceTree = "<group>"; };
 		7D070C3829CF1FFC004BD025 /* EndOfGamePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndOfGamePopUpViewController.swift; sourceTree = "<group>"; };
-		7D070C3A29CF39D8004BD025 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
 		7D070C3C29CF3DFE004BD025 /* GameModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeViewController.swift; sourceTree = "<group>"; };
+		7D070C4029CF4F03004BD025 /* UIViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViews.swift; sourceTree = "<group>"; };
+		7D070C4829D03CD9004BD025 /* WordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
+		7D21913929D04824007FEEA0 /* AppGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGlobal.swift; sourceTree = "<group>"; };
+		7D21913B29D04FB8007FEEA0 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		7DB0703529C8ACBD0077929B /* TypeFast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TypeFast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DB0703829C8ACBD0077929B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7DB0703A29C8ACBD0077929B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,9 +85,6 @@
 		7DB0706A29C8AE4C0077929B /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		7DB0707129C901AC0077929B /* SixtyModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SixtyModeViewController.swift; sourceTree = "<group>"; };
 		7DB0707529C9052D0077929B /* FreeRunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeRunViewController.swift; sourceTree = "<group>"; };
-		7DB0707829CA05CF0077929B /* AppExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppExtensions.swift; sourceTree = "<group>"; };
-		7DB0708129CA243B0077929B /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
-		7DB0708529CB840B0077929B /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +119,7 @@
 				7D070C2129CEEC38004BD025 /* WordModel.swift */,
 				7D070C3029CEF5FE004BD025 /* FileHandler.swift */,
 				7D070C3229CF0F9C004BD025 /* Player.swift */,
+				7D21913B29D04FB8007FEEA0 /* GameModel.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -140,6 +141,14 @@
 				7D070C2629CEF0D1004BD025 /* wordsEasy.txt */,
 			);
 			path = Files;
+			sourceTree = "<group>";
+		};
+		7D21913829D04810007FEEA0 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				7D21913929D04824007FEEA0 /* AppGlobal.swift */,
+			);
+			path = Global;
 			sourceTree = "<group>";
 		};
 		7DB0702C29C8ACBD0077929B = {
@@ -166,6 +175,7 @@
 		7DB0703729C8ACBD0077929B /* TypeFast */ = {
 			isa = PBXGroup;
 			children = (
+				7D21913829D04810007FEEA0 /* Global */,
 				7D070C1E29CEE593004BD025 /* Struct */,
 				7D070C1729CCB473004BD025 /* Classes */,
 				7DB0707E29CA19410077929B /* View */,
@@ -230,10 +240,7 @@
 		7DB0707729CA05B60077929B /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				7DB0707829CA05CF0077929B /* AppExtensions.swift */,
-				7DB0708129CA243B0077929B /* UIView.swift */,
-				7DB0708529CB840B0077929B /* UIViewController.swift */,
-				7D070C3A29CF39D8004BD025 /* UITextView.swift */,
+				7D070C4029CF4F03004BD025 /* UIViews.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -241,6 +248,7 @@
 		7DB0707E29CA19410077929B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7D070C4829D03CD9004BD025 /* WordCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -386,17 +394,17 @@
 				7DB0703929C8ACBD0077929B /* AppDelegate.swift in Sources */,
 				7DB0707229C901AC0077929B /* SixtyModeViewController.swift in Sources */,
 				7DB0707629C9052D0077929B /* FreeRunViewController.swift in Sources */,
-				7DB0708629CB840B0077929B /* UIViewController.swift in Sources */,
 				7D070C3D29CF3DFE004BD025 /* GameModeViewController.swift in Sources */,
-				7DB0707929CA05CF0077929B /* AppExtensions.swift in Sources */,
 				7D070C3929CF1FFC004BD025 /* EndOfGamePopUpViewController.swift in Sources */,
-				7D070C3B29CF39D8004BD025 /* UITextView.swift in Sources */,
 				7D070C3129CEF5FE004BD025 /* FileHandler.swift in Sources */,
 				7D070C2229CEEC38004BD025 /* WordModel.swift in Sources */,
+				7D070C4929D03CD9004BD025 /* WordCell.swift in Sources */,
+				7D21913A29D04824007FEEA0 /* AppGlobal.swift in Sources */,
 				7DB0706B29C8AE4C0077929B /* LaunchScreenViewController.swift in Sources */,
-				7DB0708229CA243B0077929B /* UIView.swift in Sources */,
 				7D070C3329CF0F9C004BD025 /* Player.swift in Sources */,
+				7D070C4129CF4F03004BD025 /* UIViews.swift in Sources */,
 				7DB0703B29C8ACBD0077929B /* SceneDelegate.swift in Sources */,
+				7D21913C29D04FB8007FEEA0 /* GameModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

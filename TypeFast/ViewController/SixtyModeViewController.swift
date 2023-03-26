@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SixtyModeViewController : GameModeViewController,CounterPopUpDelegate,EndOfGamePopUpDelegate,UITextFieldDelegate{
+class SixtyModeViewController : GameModeViewController,CounterPopUpDelegate,EndOfGamePopUpDelegate,GameModeDelegate{
     
     @IBOutlet weak var pulseLabel: UIImageView!
     @IBOutlet weak var timeLeftLabel: UILabel!
@@ -16,18 +16,14 @@ class SixtyModeViewController : GameModeViewController,CounterPopUpDelegate,EndO
     @IBOutlet weak var startNewGameButton: UIButton!
     @IBOutlet weak var userInputTextview: UITextField!
     var counter: Counter?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTopMenu()
         configureTextfield()
-        startNewGameButton.addTarget(self, action: #selector(showCountDownPopUp), for: .touchUpInside)
-        wordModel = WordModel(level: player.level)
-    }
-    
-    private func configureTextfield(){
-        addKeyboardResponder()
-        hideKeyboardWhenTappedAround()
+        configureStartNewGameButton(startNewGameButton)
         userInputTextview.delegate = self
+        gameModeDelegate = self
     }
     
     private func configureCounter(){
@@ -37,23 +33,8 @@ class SixtyModeViewController : GameModeViewController,CounterPopUpDelegate,EndO
         counter?.toggle()
     }
     
-    private func configureTopMenu(){
-        navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(
-                title: "HighScore",
-                style: .done,
-                target: self,
-                action: nil
-            ),
-            UIBarButtonItem(
-                customView:createButton(title: player.level)
-            ),
-        ]
-        
-    }
-    
     private func animateWordToType(){
-        wordToTypeLabel.text = wordModel?.getNextWord()
+        wordToTypeLabel.text = wordModel.getNextWord()
         wordToTypeLabel.fadeOut(){ [weak self] finished in
             guard let strongSelf = self else { return }
             if(finished){
@@ -62,22 +43,12 @@ class SixtyModeViewController : GameModeViewController,CounterPopUpDelegate,EndO
         }
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        evaluateAnswer()
-        return true
-    }
-    
-    private func evaluateAnswer(){
-        wordToTypeLabel.layer.removeAllAnimations()
-        guard let userText = userInputTextview.text, let wordToType = wordToTypeLabel.text  else { return }
-        player.evaluateAnswer(userText,wordToType: wordToType)
-        updateUserPointsLabel()
+    func evaluateAnswer(){
+        resetForNewRound(
+            userTypedWord: userInputTextview,
+            wordToTypeLabel: wordToTypeLabel,
+            userPointslabel: userPointsLabel)
         animateWordToType()
-        userInputTextview.text = ""
-    }
-    
-    private func updateUserPointsLabel(){
-        userPointsLabel.text = player.getCurrentScore()
     }
     
     private func updateTimeLeftLabel(withValue: Int){
@@ -89,7 +60,7 @@ class SixtyModeViewController : GameModeViewController,CounterPopUpDelegate,EndO
     }
     
     private func stopCurrentGame(){
-        timeLeftLabel.text = ""
+        timeLeftLabel.clear()
         removeAnimations()
         userInputTextview.unActivate()
         counter?.stop()
@@ -99,7 +70,7 @@ class SixtyModeViewController : GameModeViewController,CounterPopUpDelegate,EndO
     
     func counterPopupIsDismissed(){
         configureCounter()
-        updateUserPointsLabel()
+        updateUserPointsLabel(userPointsLabel)
         userInputTextview.clearAndActivate()
         timeLeftLabel.text = "\(TOTAL_GAME_TIME)"
         startAnimations()
@@ -108,7 +79,7 @@ class SixtyModeViewController : GameModeViewController,CounterPopUpDelegate,EndO
     func endOfGamePopupIsDismissed() {
         startNewGameButton.isHidden = false
         player.resetPlayer()
-        updateUserPointsLabel()
+        updateUserPointsLabel(userPointsLabel)
     }
     
     private func startAnimations(){
@@ -119,26 +90,6 @@ class SixtyModeViewController : GameModeViewController,CounterPopUpDelegate,EndO
     private func removeAnimations(){
         wordToTypeLabel.layer.removeAllAnimations()
         pulseLabel.layer.removeAllAnimations()
-    }
-    
-    func showEndOfGamePopUp(){
-        EndOfGamePopupViewController.showPopup(parentVC: self)
-    }
-    
-    @objc
-    func showCountDownPopUp(){
-        startNewGameButton.isHidden = true
-        wordModel?.loadWords()
-        CounterPopupViewController.showPopup(parentVC: self)
-    }
-    
-    @objc
-    override func onKeyboardShow(keyboardSize: CGRect){
-        updateConstraintValue(id: "bottomConstraintForUserInput", value: -keyboardSize.height)
-    }
-    
-    override func keyboardWillHide(sender: NSNotification){
-        updateConstraintValue(id: "bottomConstraintForUserInput", value: -10.0)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
