@@ -8,7 +8,6 @@
 import UIKit
 
 class LaunchScreenViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
-    var pickerData = ["Easy","Medium","Hard","Expert"]
     @IBOutlet weak var gameModePickerView: UIPickerView!
     
     override func viewDidLoad() {
@@ -44,11 +43,11 @@ class LaunchScreenViewController: UIViewController,UIPickerViewDelegate,UIPicker
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
+        return GAME_LEVELS.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row]
+        return GAME_LEVELS[row]
     }
     
     override func didReceiveMemoryWarning() {

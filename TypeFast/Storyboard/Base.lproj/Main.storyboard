@@ -414,6 +414,59 @@
             </objects>
             <point key="canvasLocation" x="3820.6106870229005" y="8.4507042253521139"/>
         </scene>
+        <!--High Score View Controller-->
+        <scene sceneID="K4Q-Fh-vGf">
+            <objects>
+                <pageViewController storyboardIdentifier="HighScoreViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="08k-Fy-Xx7" customClass="HighScoreViewController" customModule="TypeFast" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="40f-wH-7bN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5623" y="7"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="S4O-7Z-26c">
+            <objects>
+                <viewController storyboardIdentifier="RedViewController" id="cG4-Y2-ebV" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9Ba-uF-gcO">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="NIO-LE-mCa"/>
+                        <color key="backgroundColor" systemColor="systemRedColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8xN-KD-m48" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6663" y="53"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="EFw-Hm-Ht0">
+            <objects>
+                <viewController storyboardIdentifier="GreenViewController" id="fN5-Bw-ycJ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nXT-Ki-iJ4">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Om7-V3-O7K"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yBj-LX-a9n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7506" y="58"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="NV0-fE-MAH">
+            <objects>
+                <viewController storyboardIdentifier="BlueViewController" id="3TH-10-kyA" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4ua-D4-aTy">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="MDd-z4-snG"/>
+                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Z6-D4-0al" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8277" y="80"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="nXS-25-eNR">
             <objects>
@@ -438,6 +491,15 @@
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

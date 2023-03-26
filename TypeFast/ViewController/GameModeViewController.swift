@@ -58,7 +58,7 @@ class GameModeViewController: UIViewController,UITextFieldDelegate{
                 title: "HighScore",
                 style: .done,
                 target: self,
-                action: nil
+                action: #selector(openHighScoreScreen)
             ),
             UIBarButtonItem(
                 customView:createButton(title: APP_PLAYER.level)
@@ -80,6 +80,14 @@ class GameModeViewController: UIViewController,UITextFieldDelegate{
     deinit{
         gameModel.reset()
         printAny("deinit gamemode viewcontroller ")
+    }
+    
+    @objc
+    func openHighScoreScreen(){
+        //performSegue(withIdentifier: "HighScoreViewController", sender: self)
+        let controller = storyboard?
+            .instantiateViewController(withIdentifier: "HighScoreViewController") as? HighScoreViewController
+        present(controller!,animated: true,completion: nil)
     }
     
     @objc

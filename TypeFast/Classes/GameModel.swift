@@ -39,11 +39,11 @@ class GameModel: NSObject,UITableViewDataSource{
         let isCorrect = correctWords[index] == userTypedWords[index]
         if isCorrect{
             img = UIImage(systemName: "checkmark") ?? UIImage()
-            color = .green
+            color = .green.lighterColor
         }
         else{
             img = UIImage(systemName: "xmark") ?? UIImage()
-            color = .red
+            color = .red.lighterColor
         }
         return (correctWords[index],userTypedWords[index],img,color)
     }

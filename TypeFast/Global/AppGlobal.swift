@@ -19,4 +19,6 @@ let TOTAL_GAME_TIME = 10
 let TOTAL_ANSWER_TIME = 10.0
 let WORDS_BUFFER = 100
 
+let GAME_LEVELS = ["Easy","Medium","Hard","Expert"]
+
 let APP_PLAYER = Player()
