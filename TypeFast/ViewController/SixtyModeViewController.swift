@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SixtyModeViewController : GameModeViewController,CounterPopUpDelegate,EndOfGamePopUpDelegate,GameModeDelegate{
+class SixtyModeViewController : GameModeViewController,CounterPopUpDelegate,EndOfGamePopUpDelegate{
     
     @IBOutlet weak var pulseLabel: UIImageView!
     @IBOutlet weak var timeLeftLabel: UILabel!
@@ -19,11 +19,11 @@ class SixtyModeViewController : GameModeViewController,CounterPopUpDelegate,EndO
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        printAny("init sixty")
         configureTopMenu()
         configureTextfield()
         configureStartNewGameButton(startNewGameButton)
         userInputTextview.delegate = self
-        gameModeDelegate = self
     }
     
     private func configureCounter(){
@@ -43,7 +43,7 @@ class SixtyModeViewController : GameModeViewController,CounterPopUpDelegate,EndO
         }
     }
     
-    func evaluateAnswer(){
+    override func evaluateAnswer(){
         resetForNewRound(
             userTypedWord: userInputTextview,
             wordToTypeLabel: wordToTypeLabel,
@@ -78,7 +78,8 @@ class SixtyModeViewController : GameModeViewController,CounterPopUpDelegate,EndO
     
     func endOfGamePopupIsDismissed() {
         startNewGameButton.isHidden = false
-        player.resetPlayer()
+        APP_PLAYER.resetPlayer()
+        gameModel.reset()
         updateUserPointsLabel(userPointsLabel)
     }
     
@@ -93,14 +94,19 @@ class SixtyModeViewController : GameModeViewController,CounterPopUpDelegate,EndO
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         removeAnimations()
         counter?.stop()
         counter = nil
-        printAny("view is gone")
+        printAny("sixty mode view is gone")
     }
     
     deinit{
-        printAny("deinit viewcontroller")
+        printAny("deinit sixty viewcontroller")
+    }
+    
+    override func didReceiveMemoryWarning() {
+        printAny("memory warning sixty")
     }
     
 }

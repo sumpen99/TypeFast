@@ -286,7 +286,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME OVER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFF-a2-ISk">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIMES UP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFF-a2-ISk">
                                 <rect key="frame" x="0.0" y="69" width="393" height="50.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                 <nil key="textColor"/>
@@ -405,6 +405,7 @@
                         <outlet property="closeButton" destination="d9f-lN-FSV" id="X9O-UC-uk6"/>
                         <outlet property="dialogBoxView" destination="h2y-gM-1rf" id="ppM-N5-DZI"/>
                         <outlet property="nameTextField" destination="gm8-Fm-IZs" id="i36-oP-d3l"/>
+                        <outlet property="resultLabel" destination="iKT-Fh-10z" id="Nue-7D-fuG"/>
                         <outlet property="submitButton" destination="wT7-kD-yiD" id="gZB-gO-BZ0"/>
                         <outlet property="tableView" destination="dRR-YT-H9L" id="5pn-TY-7Zi"/>
                     </connections>

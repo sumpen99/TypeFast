@@ -44,6 +44,7 @@ class CounterPopupViewController: UIViewController{
         counterLabel.text = "GO"
         counter = nil
         delegate?.counterPopupIsDismissed()
+        delegate = nil
         dismiss(animated: true,completion: nil)
     }
     
@@ -58,6 +59,10 @@ class CounterPopupViewController: UIViewController{
         printAny("deinit popup counter")
         counter?.stop()
         counter = nil
+    }
+    
+    override func didReceiveMemoryWarning() {
+        printAny("memory warning counter")
     }
     
     static func showPopup(parentVC: UIViewController){

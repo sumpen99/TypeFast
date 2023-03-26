@@ -7,12 +7,10 @@
 
 import UIKit
 
-protocol GameModeDelegate {
-    func evaluateAnswer()
-}
-
 class GameModeViewController: UIViewController,UITextFieldDelegate{
-    var gameModeDelegate: GameModeDelegate?
+    
+    let wordModel = WordModel()
+    let gameModel = GameModel()
     
     func configureStartNewGameButton(_ btn: UIButton){
         btn.addTarget(self, action: #selector(showCountDownPopUp(_:)), for: .touchUpInside)
@@ -24,22 +22,23 @@ class GameModeViewController: UIViewController,UITextFieldDelegate{
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        gameModeDelegate?.evaluateAnswer()
+        evaluateAnswer()
         return true
     }
     
+    func evaluateAnswer(){ }
+    
     func resetForNewRound(userTypedWord: UITextField,wordToTypeLabel: UILabel,userPointslabel: UILabel){
         wordToTypeLabel.layer.removeAllAnimations()
-        player.updateScore(gameModel.evaluateAnswer(
-                                     getUserWrittenText(userTypedWord),
-                                     getCurrentWordToType(wordToTypeLabel)))
-        userPointslabel.text = player.getCurrentScore()
+        let userTypedWord = getUserWrittenText(userTypedWord)
+        let wordToType = getCurrentWordToType(wordToTypeLabel)
+        APP_PLAYER.updateScore(gameModel.evaluateAnswer(userTypedWord,wordToType))
+        userPointslabel.text = APP_PLAYER.getCurrentScore()
     }
     
     func updateUserPointsLabel(_ userPointslabel: UILabel){
-        userPointslabel.text = player.getCurrentScore()
+        userPointslabel.text = APP_PLAYER.getCurrentScore()
     }
-    
     
     func getCurrentWordToType(_ label: UILabel) -> String{
         let word = label.text ?? "Undefined Random Word"
@@ -62,7 +61,7 @@ class GameModeViewController: UIViewController,UITextFieldDelegate{
                 action: nil
             ),
             UIBarButtonItem(
-                customView:createButton(title: player.level)
+                customView:createButton(title: APP_PLAYER.level)
             ),
         ]
         
@@ -70,7 +69,17 @@ class GameModeViewController: UIViewController,UITextFieldDelegate{
     
     func showEndOfGamePopUp(){
         wordModel.clearWordList()
+        EndOfGamePopupViewController.gameModel = gameModel
         EndOfGamePopupViewController.showPopup(parentVC: self)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        printAny("memory warning gamemode")
+    }
+    
+    deinit{
+        gameModel.reset()
+        printAny("deinit gamemode viewcontroller ")
     }
     
     @objc

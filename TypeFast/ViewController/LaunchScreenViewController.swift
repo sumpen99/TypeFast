@@ -7,32 +7,36 @@
 
 import UIKit
 
-class LaunchScreenViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
-    
+class LaunchScreenViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
+    var pickerData = ["Easy","Medium","Hard","Expert"]
     @IBOutlet weak var gameModePickerView: UIPickerView!
-    var pickerData: [String] = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configurePickerView()
     }
     
+    private func configurePickerView(){
+        gameModePickerView.dataSource = self
+        gameModePickerView.delegate = self
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.destination is GameModeViewController {
-            guard let value = pickerView(
-                gameModePickerView,
-                titleForRow: gameModePickerView.selectedRow(inComponent: 0),
-                forComponent: 0)
-            else { player.level = "Easy"; return; }
-            
-            player.level = value
+            setSelectedValue()
         }
     }
     
-    private func configurePickerView(){
-        gameModePickerView.delegate = self
-        gameModePickerView.dataSource = self
-        pickerData = ["Easy","Medium","Hard","Expert"]
+    func setSelectedValue(){
+        guard let value = pickerView(
+                gameModePickerView,
+                titleForRow: gameModePickerView.selectedRow(inComponent: 0),
+                forComponent: 0)
+        else {
+            APP_PLAYER.level = "Easy"
+            return
+        }
+        APP_PLAYER.level = value
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -47,15 +51,8 @@ class LaunchScreenViewController: UIViewController, UIPickerViewDelegate, UIPick
         return pickerData[row]
     }
     
-    
-    /*@objc
-    func moveToSixtySecondsViewController(){
-        let controller = storyboard?
-            .instantiateViewController(withIdentifier: "GameModeSixty") as? SixtyModeViewController
-        present(controller!,animated: false,completion: nil)
-    }*/
-    
-    /*func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    }*/
+    override func didReceiveMemoryWarning() {
+        printAny("memory warning launchscreren")
+    }
     
 }

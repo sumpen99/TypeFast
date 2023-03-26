@@ -11,7 +11,7 @@ class WordModel{
     var currentWord: String = ""
     
     func loadWords(){
-        FileHandler.readFile(player.level){ words in
+        FileHandler.readFile(APP_PLAYER.level){ words in
             self.wordList = words
         }
     }

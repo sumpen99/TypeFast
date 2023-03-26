@@ -16,31 +16,30 @@ class EndOfGamePopupViewController: UIViewController,UITextFieldDelegate, UITabl
     static let identifier = "EndOfGamePopupViewController"
     var delegate: EndOfGamePopUpDelegate?
    
+    @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet var dialogBoxView: UIView!
-    let cellReuseIdentifier = "cell"
     
-    let test = ["1","2","3","4","5","6","1","2","3","4","5","6","1","2","3","4","5","6"]
+    static var gameModel: GameModel? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //dialogBoxView.layer.cornerRadius = 6.0
-        //dialogBoxView.layer.borderWidth = 1.2
-        //dialogBoxView.layer.borderColor = UIColor(named: "dialogBoxGray")?.cgColor
-        //let tapGesture = UITapGestureRecognizer(target: self, action: #selector( handleTap(sender:)))
-        //dialogBoxView.addGestureRecognizer(tapGesture)
         configureTextfield()
         configureButtons()
         configureTableView()
+        configureResultLabel()
+    }
+    
+    private func configureResultLabel(){
+        resultLabel.text = "Score: " + APP_PLAYER.getCurrentScore()
     }
     
     private func configureTableView(){
-        gameModel.setTableView(tableView: self.tableView)
+        EndOfGamePopupViewController.gameModel?.setTableView(tableView: self.tableView)
         tableView.delegate = self
-        //tableView.dataSource = gameModel
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -60,7 +59,18 @@ class EndOfGamePopupViewController: UIViewController,UITextFieldDelegate, UITabl
     @objc
     private func closePopup(){
         self.dismiss(animated: true)
+        releaseDelegate()
+        releaseGameModel()
+    }
+    
+    private func releaseGameModel(){
+        EndOfGamePopupViewController.gameModel?.reset()
+        EndOfGamePopupViewController.gameModel = nil
+    }
+    
+    private func releaseDelegate(){
         delegate?.endOfGamePopupIsDismissed()
+        delegate = nil
     }
     
     private func configureSelf(){
@@ -70,8 +80,11 @@ class EndOfGamePopupViewController: UIViewController,UITextFieldDelegate, UITabl
     }
     
     deinit{
-        gameModel.reset()
         printAny("deinit popup end of game")
+    }
+    
+    override func didReceiveMemoryWarning() {
+        printAny("memory warning end of game")
     }
     
     @objc
