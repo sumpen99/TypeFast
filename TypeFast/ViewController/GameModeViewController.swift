@@ -8,9 +8,7 @@
 import UIKit
 
 class GameModeViewController: UIViewController,UITextFieldDelegate{
-    
     let wordModel = WordModel()
-    let gameModel = GameModel()
     
     func configureStartNewGameButton(_ btn: UIButton){
         btn.addTarget(self, action: #selector(showCountDownPopUp(_:)), for: .touchUpInside)
@@ -32,7 +30,7 @@ class GameModeViewController: UIViewController,UITextFieldDelegate{
         wordToTypeLabel.layer.removeAllAnimations()
         let userTypedWord = getUserWrittenText(userTypedWord)
         let wordToType = getCurrentWordToType(wordToTypeLabel)
-        APP_PLAYER.updateScore(gameModel.evaluateAnswer(userTypedWord,wordToType))
+        APP_PLAYER.updateScore(GameModel.evaluateLastWord(userTypedWord,wordToType))
         userPointslabel.text = APP_PLAYER.getCurrentScore()
     }
     
@@ -69,7 +67,6 @@ class GameModeViewController: UIViewController,UITextFieldDelegate{
     
     func showEndOfGamePopUp(){
         wordModel.clearWordList()
-        EndOfGamePopupViewController.gameModel = gameModel
         EndOfGamePopupViewController.showPopup(parentVC: self)
     }
     
@@ -78,7 +75,6 @@ class GameModeViewController: UIViewController,UITextFieldDelegate{
     }
     
     deinit{
-        gameModel.reset()
         printAny("deinit gamemode viewcontroller ")
     }
     

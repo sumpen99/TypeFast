@@ -79,7 +79,6 @@ class SixtyModeViewController : GameModeViewController,CounterPopUpDelegate,EndO
     func endOfGamePopupIsDismissed() {
         startNewGameButton.isHidden = false
         APP_PLAYER.resetPlayer()
-        gameModel.reset()
         updateUserPointsLabel(userPointsLabel)
     }
     

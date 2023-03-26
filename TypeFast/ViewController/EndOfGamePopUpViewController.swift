@@ -23,7 +23,7 @@ class EndOfGamePopupViewController: UIViewController,UITextFieldDelegate, UITabl
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet var dialogBoxView: UIView!
     
-    static var gameModel: GameModel? = nil
+    private var gameModel: GameModel? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,8 @@ class EndOfGamePopupViewController: UIViewController,UITextFieldDelegate, UITabl
     }
     
     private func configureTableView(){
-        EndOfGamePopupViewController.gameModel?.setTableView(tableView: self.tableView)
+        gameModel = GameModel()
+        gameModel?.setTableView(tableView: self.tableView)
         tableView.delegate = self
     }
     
@@ -64,8 +65,8 @@ class EndOfGamePopupViewController: UIViewController,UITextFieldDelegate, UITabl
     }
     
     private func releaseGameModel(){
-        EndOfGamePopupViewController.gameModel?.reset()
-        EndOfGamePopupViewController.gameModel = nil
+        gameModel?.reset()
+        gameModel = nil
     }
     
     private func releaseDelegate(){

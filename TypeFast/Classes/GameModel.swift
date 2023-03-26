@@ -8,9 +8,8 @@ import UIKit
 
 class GameModel: NSObject,UITableViewDataSource{
     let cellReuseIdentifier = "cell"
-    private var correctWords = [String]()
-    private var userTypedWords = [String]()
-    private var count: Int{ return correctWords.count}
+    private static var wordsInLastSession = [(userTypedWord:String,correctAnswer:String)]()
+    private var count: Int{ return GameModel.wordsInLastSession.count}
     private weak var tableView: UITableView? = nil
     
     func setTableView(tableView:UITableView){
@@ -36,7 +35,9 @@ class GameModel: NSObject,UITableViewDataSource{
     func getNextCellValues(index: Int) -> (String,String,UIImage,UIColor){
         var img: UIImage
         var color: UIColor
-        let isCorrect = correctWords[index] == userTypedWords[index]
+        let userTypedWord = GameModel.wordsInLastSession[index].userTypedWord
+        let correctAnswer = GameModel.wordsInLastSession[index].correctAnswer
+        let isCorrect = userTypedWord == correctAnswer
         if isCorrect{
             img = UIImage(systemName: "checkmark") ?? UIImage()
             color = .green.lighterColor
@@ -45,18 +46,16 @@ class GameModel: NSObject,UITableViewDataSource{
             img = UIImage(systemName: "xmark") ?? UIImage()
             color = .red.lighterColor
         }
-        return (correctWords[index],userTypedWords[index],img,color)
+        return (correctAnswer,userTypedWord,img,color)
     }
     
-    func evaluateAnswer(_ userTypedWord: String,_ wordToType: String) -> Bool{
-        correctWords.append(wordToType)
-        userTypedWords.append(userTypedWord)
+    static func evaluateLastWord(_ userTypedWord: String,_ wordToType: String) -> Bool{
+        wordsInLastSession.append((userTypedWord:userTypedWord,correctAnswer:wordToType))
         return userTypedWord == wordToType
     }
     
     func reset(){
-        correctWords.removeAll()
-        userTypedWords.removeAll()
+        GameModel.wordsInLastSession.removeAll()
         tableView = nil
     }
     
