@@ -9,6 +9,12 @@ import UIKit
 
 class GameModeViewController: UIViewController,UITextFieldDelegate{
     let wordModel = WordModel()
+    var counter: Counter?
+    
+    func configureApplicationNotifications(){
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationWentInToBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
+    }
     
     func configureStartNewGameButton(_ btn: UIButton){
         btn.addTarget(self, action: #selector(showCountDownPopUp(_:)), for: .touchUpInside)
@@ -30,7 +36,8 @@ class GameModeViewController: UIViewController,UITextFieldDelegate{
         wordToTypeLabel.layer.removeAllAnimations()
         let userTypedWord = getUserWrittenText(userTypedWord)
         let wordToType = getCurrentWordToType(wordToTypeLabel)
-        APP_PLAYER.updateScore(GameModel.evaluateLastWord(userTypedWord,wordToType))
+        let isCorrectAnswer = GameModel.evaluateLastWord(userTypedWord,wordToType)
+        APP_PLAYER.updateScore(isCorrectAnswer)
         userPointslabel.text = APP_PLAYER.getCurrentScore()
     }
     
@@ -70,6 +77,19 @@ class GameModeViewController: UIViewController,UITextFieldDelegate{
         EndOfGamePopupViewController.showPopup(parentVC: self)
     }
     
+    func counterIsCounting() -> Bool {
+        return counter != nil && counter!.isCounting
+    }
+ 
+    @objc
+    func applicationDidBecomeActive(notification: NSNotification) {
+    }
+    
+    @objc
+    func applicationWentInToBackground(notification: NSNotification) {
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         printAny("memory warning gamemode")
     }
@@ -80,9 +100,9 @@ class GameModeViewController: UIViewController,UITextFieldDelegate{
     
     @objc
     func openHighScoreScreen(){
-        //performSegue(withIdentifier: "HighScoreViewController", sender: self)
+        if counterIsCounting() { return }
         let controller = storyboard?
-            .instantiateViewController(withIdentifier: "HighScoreViewController") as? HighScoreViewController
+            .instantiateViewController(withIdentifier: "HighScorePageController") as? HighScorePageController
         present(controller!,animated: true,completion: nil)
     }
     
@@ -92,6 +112,7 @@ class GameModeViewController: UIViewController,UITextFieldDelegate{
         wordModel.loadWords()
         CounterPopupViewController.showPopup(parentVC: self)
     }
+    
     
     @objc
     override func onKeyboardShow(keyboardSize: CGRect){

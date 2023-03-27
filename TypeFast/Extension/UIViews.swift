@@ -13,7 +13,7 @@ extension UILabel{
     }
 }
 
-extension HighScoreViewController: UIPageViewControllerDataSource {
+extension HighScorePageController: UIPageViewControllerDataSource {
  
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
@@ -22,8 +22,7 @@ extension HighScoreViewController: UIPageViewControllerDataSource {
         }
         
         let previousIndex = viewControllerIndex - 1
-        // User is on the first view controller and swiped left to loop to
-        // the last view controller.
+     
         guard previousIndex >= 0 else {
             return orderedViewControllers.last
         }
@@ -44,8 +43,6 @@ extension HighScoreViewController: UIPageViewControllerDataSource {
         let nextIndex = viewControllerIndex + 1
         let orderedViewControllersCount = orderedViewControllers.count
         
-        // User is on the last view controller and swiped right to loop to
-        // the first view controller.
         guard orderedViewControllersCount != nextIndex else {
             return orderedViewControllers.first
         }

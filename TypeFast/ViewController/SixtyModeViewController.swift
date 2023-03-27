@@ -15,13 +15,13 @@ class SixtyModeViewController : GameModeViewController,CounterPopUpDelegate,EndO
     @IBOutlet weak var wordToTypeLabel: UILabel!
     @IBOutlet weak var startNewGameButton: UIButton!
     @IBOutlet weak var userInputTextview: UITextField!
-    var counter: Counter?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         printAny("init sixty")
         configureTopMenu()
         configureTextfield()
+        configureApplicationNotifications()
         configureStartNewGameButton(startNewGameButton)
         userInputTextview.delegate = self
     }
@@ -52,7 +52,7 @@ class SixtyModeViewController : GameModeViewController,CounterPopUpDelegate,EndO
     }
     
     private func updateTimeLeftLabel(withValue: Int){
-        if(withValue % TOTAL_GAME_TIME == 0){
+        if(withValue <= 0){
             stopCurrentGame()
             return
         }
@@ -98,6 +98,17 @@ class SixtyModeViewController : GameModeViewController,CounterPopUpDelegate,EndO
         counter?.stop()
         counter = nil
         printAny("sixty mode view is gone")
+    }
+    
+    override func applicationDidBecomeActive(notification: NSNotification){
+        guard let counter = counter else{ return }
+        if counter.resume(){
+            animateWordToType()
+        }
+    }
+    
+    override func applicationWentInToBackground(notification: NSNotification) {
+        counter?.paus()
     }
     
     deinit{

@@ -24,6 +24,11 @@
 		7D21913A29D04824007FEEA0 /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D21913929D04824007FEEA0 /* AppGlobal.swift */; };
 		7D21913C29D04FB8007FEEA0 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D21913B29D04FB8007FEEA0 /* GameModel.swift */; };
 		7D21914829D0B3AD007FEEA0 /* HighScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D21914729D0B3AD007FEEA0 /* HighScoreViewController.swift */; };
+		7D21914A29D1D6DC007FEEA0 /* HighScorePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D21914929D1D6DC007FEEA0 /* HighScorePageController.swift */; };
+		7D21914C29D1E5E9007FEEA0 /* HighScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D21914B29D1E5E9007FEEA0 /* HighScoreCell.swift */; };
+		7D21914E29D20B12007FEEA0 /* SharedPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D21914D29D20B12007FEEA0 /* SharedPreference.swift */; };
+		7D21915029D215D7007FEEA0 /* HighScorePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D21914F29D215D7007FEEA0 /* HighScorePlayer.swift */; };
+		7D21915229D221A9007FEEA0 /* HighScoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D21915129D221A9007FEEA0 /* HighScoreModel.swift */; };
 		7DB0703929C8ACBD0077929B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0703829C8ACBD0077929B /* AppDelegate.swift */; };
 		7DB0703B29C8ACBD0077929B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0703A29C8ACBD0077929B /* SceneDelegate.swift */; };
 		7DB0704029C8ACBD0077929B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DB0703E29C8ACBD0077929B /* Main.storyboard */; };
@@ -72,6 +77,11 @@
 		7D21913929D04824007FEEA0 /* AppGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGlobal.swift; sourceTree = "<group>"; };
 		7D21913B29D04FB8007FEEA0 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		7D21914729D0B3AD007FEEA0 /* HighScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreViewController.swift; sourceTree = "<group>"; };
+		7D21914929D1D6DC007FEEA0 /* HighScorePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScorePageController.swift; sourceTree = "<group>"; };
+		7D21914B29D1E5E9007FEEA0 /* HighScoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreCell.swift; sourceTree = "<group>"; };
+		7D21914D29D20B12007FEEA0 /* SharedPreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedPreference.swift; sourceTree = "<group>"; };
+		7D21914F29D215D7007FEEA0 /* HighScorePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScorePlayer.swift; sourceTree = "<group>"; };
+		7D21915129D221A9007FEEA0 /* HighScoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreModel.swift; sourceTree = "<group>"; };
 		7DB0703529C8ACBD0077929B /* TypeFast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TypeFast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DB0703829C8ACBD0077929B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7DB0703A29C8ACBD0077929B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +132,9 @@
 				7D070C3029CEF5FE004BD025 /* FileHandler.swift */,
 				7D070C3229CF0F9C004BD025 /* Player.swift */,
 				7D21913B29D04FB8007FEEA0 /* GameModel.swift */,
+				7D21914D29D20B12007FEEA0 /* SharedPreference.swift */,
+				7D21914F29D215D7007FEEA0 /* HighScorePlayer.swift */,
+				7D21915129D221A9007FEEA0 /* HighScoreModel.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -218,6 +231,7 @@
 				7D070C3829CF1FFC004BD025 /* EndOfGamePopUpViewController.swift */,
 				7D070C3C29CF3DFE004BD025 /* GameModeViewController.swift */,
 				7D21914729D0B3AD007FEEA0 /* HighScoreViewController.swift */,
+				7D21914929D1D6DC007FEEA0 /* HighScorePageController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -252,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				7D070C4829D03CD9004BD025 /* WordCell.swift */,
+				7D21914B29D1E5E9007FEEA0 /* HighScoreCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -393,15 +408,20 @@
 			files = (
 				7D070C2F29CEF578004BD025 /* Word.swift in Sources */,
 				7D070C3729CF1FB5004BD025 /* CounterPopUpViewController.swift in Sources */,
+				7D21914C29D1E5E9007FEEA0 /* HighScoreCell.swift in Sources */,
+				7D21915029D215D7007FEEA0 /* HighScorePlayer.swift in Sources */,
 				7D070C1929CCB496004BD025 /* Counter.swift in Sources */,
 				7DB0703929C8ACBD0077929B /* AppDelegate.swift in Sources */,
 				7DB0707229C901AC0077929B /* SixtyModeViewController.swift in Sources */,
 				7DB0707629C9052D0077929B /* FreeRunViewController.swift in Sources */,
 				7D070C3D29CF3DFE004BD025 /* GameModeViewController.swift in Sources */,
+				7D21914E29D20B12007FEEA0 /* SharedPreference.swift in Sources */,
 				7D070C3929CF1FFC004BD025 /* EndOfGamePopUpViewController.swift in Sources */,
 				7D070C3129CEF5FE004BD025 /* FileHandler.swift in Sources */,
+				7D21914A29D1D6DC007FEEA0 /* HighScorePageController.swift in Sources */,
 				7D21914829D0B3AD007FEEA0 /* HighScoreViewController.swift in Sources */,
 				7D070C2229CEEC38004BD025 /* WordModel.swift in Sources */,
+				7D21915229D221A9007FEEA0 /* HighScoreModel.swift in Sources */,
 				7D070C4929D03CD9004BD025 /* WordCell.swift in Sources */,
 				7D21913A29D04824007FEEA0 /* AppGlobal.swift in Sources */,
 				7DB0706B29C8AE4C0077929B /* LaunchScreenViewController.swift in Sources */,

@@ -16,9 +16,10 @@ class EndOfGamePopupViewController: UIViewController,UITextFieldDelegate, UITabl
     static let identifier = "EndOfGamePopupViewController"
     var delegate: EndOfGamePopUpDelegate?
    
-    @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var pointsLabel: UILabel!
+    @IBOutlet weak var levelLabel: UILabel!
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet var dialogBoxView: UIView!
@@ -30,11 +31,12 @@ class EndOfGamePopupViewController: UIViewController,UITextFieldDelegate, UITabl
         configureTextfield()
         configureButtons()
         configureTableView()
-        configureResultLabel()
+        configureResultLabels()
     }
     
-    private func configureResultLabel(){
-        resultLabel.text = "Score: " + APP_PLAYER.getCurrentScore()
+    private func configureResultLabels(){
+        levelLabel.text = APP_PLAYER.level
+        pointsLabel.text = APP_PLAYER.getCurrentScore()
     }
     
     private func configureTableView(){
@@ -48,7 +50,7 @@ class EndOfGamePopupViewController: UIViewController,UITextFieldDelegate, UITabl
     }
     
     private func configureButtons(){
-        closeButton.addTarget(self, action: #selector(closePopup), for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(closePopup), for: .touchUpInside)
     }
     
     private func configureTextfield(){

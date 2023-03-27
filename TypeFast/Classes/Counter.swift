@@ -7,15 +7,12 @@
 
 import Foundation
 
-protocol CounterDelegate{
-    func counterHasFinished(timeElapsed: Double)
-}
-
 class Counter{
     
     private let step: Double
     private var timer: Timer?
-    
+    private var isPaused: Bool = false
+    var isCounting: Bool { return timer != nil }
     private(set) var current: Double = 0.0
     private(set) var from: Double?
     private(set) var to: Double?
@@ -25,10 +22,6 @@ class Counter{
     
     typealias TimeUpdated = (_ time: Double)->Void
     let timeUpdated: TimeUpdated
-    
-    var isPaused:Bool{
-        return timer == nil
-    }
     
     init(to: Double,from: Double,step: Double = 1.0,timeUpdated: @escaping TimeUpdated){
         self.to = to
@@ -51,47 +44,43 @@ class Counter{
         deinitTimer()
     }
     
+    func resume() -> Bool{
+        if isPaused{
+            toggle()
+            isPaused = false
+            return true
+        }
+        return false
+    }
+    
+    func paus(){
+        guard timer != nil else{
+            return
+        }
+        deinitTimer()
+        isPaused = true
+    }
+    
     func stop(){
-        printAny("stop clock")
         deinitTimer()
         from = nil
         to = nil
-        timerSavedTime = 0
-        //timeUpdated(0)
     }
     
     private func initTimer(){
         let action: (Timer)->Void = { [weak self] timer in
             guard let strongSelf = self
             else { return }
-            
-            //let to = Date().timeIntervalSince1970
-            //let timeIntervalFrom = strongSelf.timeIntervalTimelapsFrom ?? to
-            //let time = strongSelf.timerSavedTime + (to - timeIntervalFrom)
             strongSelf.current -= strongSelf.step
             strongSelf.timeUpdated(round(strongSelf.current))
         }
-        
-        /*if from == nil {
-            from = Date()
-        }
-        if timeIntervalTimelapsFrom == nil {
-            timeIntervalTimelapsFrom = Date().timeIntervalSince1970
-        }*/
-        
         timer = Timer.scheduledTimer(withTimeInterval: step,
                                      repeats: true,
                                      block: action)
     }
     
     private func deinitTimer(){
-        /*if let timeIntervalTimelapsFrom = timeIntervalTimelapsFrom {
-            let to = Date().timeIntervalSince1970
-            timerSavedTime += to - timeIntervalTimelapsFrom
-        }*/
-        
         timer?.invalidate()
         timer = nil
-        //timeIntervalTimelapsFrom = nil
     }
 }
