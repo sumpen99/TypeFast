@@ -22,6 +22,20 @@ func getCurrentDate() -> String{
     return df.string(from: date)
 }
 
+func getCorrectOrderOfControllers() -> [String]{
+    printAny("hepp")
+    switch APP_PLAYER.level {
+        case "Easy" :
+            return ["Easy","Medium","Hard","Expert"]
+        case "Medium" :
+            return ["Medium","Hard","Expert","Easy"]
+        case "Hard" :
+            return ["Hard","Expert","Easy","Medium"]
+        default :
+            return ["Expert","Easy","Medium","Hard"]
+    }
+}
+
 let TOTAL_GAME_TIME = 15
 let TOTAL_ANSWER_TIME = 7.0
 let WORDS_BUFFER = 100

@@ -13,8 +13,6 @@ class LaunchScreenViewController: UIViewController,UIPickerViewDelegate,UIPicker
     override func viewDidLoad() {
         super.viewDidLoad()
         configurePickerView()
-        //clearAllTestData()
-        //populateHighScoreWithTestData()
     }
     
     private func configurePickerView(){

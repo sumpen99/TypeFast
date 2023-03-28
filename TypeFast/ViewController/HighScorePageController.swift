@@ -8,12 +8,12 @@
 import UIKit
 
 class HighScorePageController: UIPageViewController{
-    
+    private(set) var orderOfControllers: [String]  = { getCorrectOrderOfControllers() }()
     private(set) lazy var orderedViewControllers: [HighScoreViewController] = {
-        return [self.newHighScoreViewController(level: "Easy"),
-                self.newHighScoreViewController(level: "Medium"),
-                self.newHighScoreViewController(level: "Hard"),
-                self.newHighScoreViewController(level: "Expert")]
+        return [self.newHighScoreViewController(level: orderOfControllers[0]),
+                self.newHighScoreViewController(level: orderOfControllers[1]),
+                self.newHighScoreViewController(level: orderOfControllers[2]),
+                self.newHighScoreViewController(level: orderOfControllers[3])]
     }()
 
     private func newHighScoreViewController(level: String) -> HighScoreViewController {
@@ -31,7 +31,10 @@ class HighScorePageController: UIPageViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
-        
+        setFirstViewController()
+    }
+    
+    private func setFirstViewController(){
         if let firstViewController = orderedViewControllers.first {
             setViewControllers([firstViewController],direction: .forward,
                     animated: true,

@@ -84,9 +84,15 @@ class EndOfGamePopupViewController: UIViewController,UITextFieldDelegate, UITabl
     @objc
     private func submitHighScoreResult(){
         if APP_PLAYER.setNewName(nameTextField.text){
-            SharedPreference.writeNewPlayerIfScoreMadeBoard(){ result in
-                printAny(result)
+            SharedPreference.writeNewPlayerIfScoreMadeBoard(){ success in
+                let msg = success ? "Saved to High-Score List" : "Unexpected error occurred "
+                showSimpleAlert(withTitle: "", withMessage: msg){ finished in
+                    self.closePopup()
+                }
             }
+        }
+        else{
+            showSimpleAlert(withTitle: "", withMessage: "Please provid a name")
         }
     }
     

@@ -13,6 +13,46 @@ extension UILabel{
     }
 }
 
+extension UIColor {
+    convenience init(rgb: UInt) {
+        self.init(
+            red: CGFloat((rgb & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgb & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgb & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
+    }
+}
+
+extension  UIViewController {
+
+    func showSimpleAlert(withTitle title: String,
+                         withMessage message:String,
+                         completion: ((_ result:Bool) -> Void)? = nil) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: { action in
+            completion?(true)
+        })
+        alert.addAction(ok)
+        DispatchQueue.main.async(execute: {
+            self.present(alert, animated: true)
+        })
+    }
+    
+    func showAlert(withTitle title: String, withMessage message:String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: { action in
+        })
+        let cancel = UIAlertAction(title: "Cancel", style: .default, handler: { action in
+        })
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        DispatchQueue.main.async(execute: {
+            self.present(alert, animated: true)
+        })
+    }
+}
+
 extension HighScorePageController: UIPageViewControllerDataSource {
  
     func pageViewController(_ pageViewController: UIPageViewController,

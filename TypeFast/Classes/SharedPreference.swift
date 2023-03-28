@@ -21,10 +21,11 @@ class SharedPreference {
         }
         
         let cnt = table.count
-        if cnt >= MAX_HIGHSCORE_PLAYERS && player.points < table[cnt-1].points { completion(false);return;}
+        if cnt >= MAX_HIGHSCORE_PLAYERS { table.removeLast() }
+        //if cnt >= MAX_HIGHSCORE_PLAYERS && player.points < table[cnt-1].points { completion(false);return;}
         table.append(player)
         table = table.sorted{ $0.points > $1.points }
-        if cnt+1 > MAX_HIGHSCORE_PLAYERS { table.removeLast()}
+        //if cnt+1 > MAX_HIGHSCORE_PLAYERS { table.removeLast()}
         writeNewPlayersToTable(level,players: table)
         completion(true)
     }
