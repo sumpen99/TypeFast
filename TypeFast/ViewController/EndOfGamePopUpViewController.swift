@@ -22,16 +22,31 @@ class EndOfGamePopupViewController: UIViewController,UITextFieldDelegate, UITabl
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var scoreIsGoodEnoughLabel: UILabel!
     @IBOutlet var dialogBoxView: UIView!
-    
+  
     private var gameModel: GameModel? = nil
+    private var pointsToMakeBoard:Int32 { return SharedPreference.getLastPlayerFromTable(APP_PLAYER.level)}
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureSubmitOptions()
         configureTextfield()
-        configureButtons()
+        configureBackButton()
         configureTableView()
         configureResultLabels()
+    }
+    
+    private func configureSubmitOptions(){
+        if APP_PLAYER.points >= pointsToMakeBoard{
+            nameTextField.text = APP_PLAYER.name
+            submitButton.addTarget(self, action: #selector(submitHighScoreResult), for: .touchUpInside)
+        }
+        else{
+            scoreIsGoodEnoughLabel.text = ""
+            nameTextField.isHidden = true
+            submitButton.isHidden = true
+        }
     }
     
     private func configureResultLabels(){
@@ -49,7 +64,7 @@ class EndOfGamePopupViewController: UIViewController,UITextFieldDelegate, UITabl
         printAny("you tapped cell \(indexPath.row)")
     }
     
-    private func configureButtons(){
+    private func configureBackButton(){
         backButton.addTarget(self, action: #selector(closePopup), for: .touchUpInside)
     }
     
@@ -64,6 +79,15 @@ class EndOfGamePopupViewController: UIViewController,UITextFieldDelegate, UITabl
         self.dismiss(animated: true)
         releaseDelegate()
         releaseGameModel()
+    }
+    
+    @objc
+    private func submitHighScoreResult(){
+        if APP_PLAYER.setNewName(nameTextField.text){
+            SharedPreference.writeNewPlayerIfScoreMadeBoard(){ result in
+                printAny(result)
+            }
+        }
     }
     
     private func releaseGameModel(){

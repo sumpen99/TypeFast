@@ -12,6 +12,13 @@ class Player{
     var points: Int = 0
     var numTypedWords: Int = 0
     
+    func setNewName(_ name: String?) -> Bool{
+        guard let name = name else { return false }
+        if name.isEmpty { return false }
+        self.name = name
+        return true
+    }
+    
     func updateScore(_ answerIsCorrect: Bool){
         if answerIsCorrect {
             points += 1

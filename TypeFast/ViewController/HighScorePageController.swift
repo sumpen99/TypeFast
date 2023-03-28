@@ -9,15 +9,20 @@ import UIKit
 
 class HighScorePageController: UIPageViewController{
     
-    private(set) lazy var orderedViewControllers: [UIViewController] = {
-        return [self.newColoredViewController(color: "Red"),
-                self.newColoredViewController(color: "Red"),
-                self.newColoredViewController(color: "Red")]
+    private(set) lazy var orderedViewControllers: [HighScoreViewController] = {
+        return [self.newHighScoreViewController(level: "Easy"),
+                self.newHighScoreViewController(level: "Medium"),
+                self.newHighScoreViewController(level: "Hard"),
+                self.newHighScoreViewController(level: "Expert")]
     }()
 
-    private func newColoredViewController(color: String) -> UIViewController {
-        return UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewController(withIdentifier: "\(color)ViewController")
+    private func newHighScoreViewController(level: String) -> HighScoreViewController {
+        let viewController = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(withIdentifier: "HighScoreViewController") as! HighScoreViewController
+        viewController.level = level
+        return viewController
+        //return UIStoryboard(name: "Main", bundle: nil)
+            //.instantiateViewController(withIdentifier: "\(color)ViewController") as! HighScoreViewController
         /*return storyboard?
         .instantiateViewController(withIdentifier: "\(color)ViewController") as? UIViewController ?? UIViewController()*/
         

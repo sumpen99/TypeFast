@@ -20,6 +20,10 @@ class HighScorePlayer: NSObject, NSCoding ,NSSecureCoding{
         self.points = points ?? 0
 
     }
+    
+    convenience init(date:String) {
+        self.init(name:APP_PLAYER.name,date:date,points:Int32(APP_PLAYER.points))
+    }
 
     required convenience init(coder aDecoder: NSCoder) {
         let name = aDecoder.decodeObject(forKey: "name") as? String
