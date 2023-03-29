@@ -18,12 +18,18 @@ class SixtyModeViewController : GameModeViewController,CounterPopUpDelegate,EndO
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        printAny("init sixty")
-        configureTopMenu()
-        configureTextfield()
-        configureApplicationNotifications()
-        configureStartNewGameButton(startNewGameButton)
+        configureTopMenu(btn:UIBarButtonItem(
+            title: "HighScore",
+            style: .done,
+            target: self,
+            action: #selector(openHighScoreScreen)
+        ))
+        configureStartNewGameButton()
         userInputTextview.delegate = self
+    }
+    
+    func configureStartNewGameButton(){
+        startNewGameButton.addTarget(self, action: #selector(showCountDownPopUp(_:)), for: .touchUpInside)
     }
     
     private func configureCounter(){
@@ -46,8 +52,8 @@ class SixtyModeViewController : GameModeViewController,CounterPopUpDelegate,EndO
     override func evaluateAnswer(){
         resetForNewRound(
             userTypedWord: userInputTextview,
-            wordToTypeLabel: wordToTypeLabel,
-            userPointslabel: userPointsLabel)
+            wordToTypeLabel: wordToTypeLabel)
+        userPointsLabel.text = APP_PLAYER.getCurrentScore()
         animateWordToType()
     }
     
@@ -73,11 +79,13 @@ class SixtyModeViewController : GameModeViewController,CounterPopUpDelegate,EndO
         updateUserPointsLabel(userPointsLabel)
         userInputTextview.clearAndActivate()
         timeLeftLabel.text = "\(TOTAL_GAME_TIME)"
+        menuLevelButton?.isEnabled = false
         startAnimations()
     }
     
     func endOfGamePopupIsDismissed() {
         startNewGameButton.isHidden = false
+        menuLevelButton?.isEnabled = true
         APP_PLAYER.resetPlayer()
         updateUserPointsLabel(userPointsLabel)
     }
@@ -92,11 +100,15 @@ class SixtyModeViewController : GameModeViewController,CounterPopUpDelegate,EndO
         pulseLabel.layer.removeAllAnimations()
     }
     
+    @objc
+    func showCountDownPopUp(_ btn: UIButton){
+        btn.isHidden = true
+        loadWordsAndCountDown()
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         removeAnimations()
-        counter?.stop()
-        counter = nil
         printAny("sixty mode view is gone")
     }
     

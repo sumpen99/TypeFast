@@ -69,12 +69,14 @@ class SharedPreference {
         return nil
     }
     
-    static func getLastPlayerFromTable(_ level: String) -> Int32 {
+    static func getMinimumScoreToMakeHighScoreTable(_ level: String) -> Int32 {
         guard let decodedData = userDefault.data(forKey: level) else { return -1 }
         do{
             let decodedPlayers = try (NSKeyedUnarchiver.unarchivedObject(
                 ofClasses: [NSArray.self, NSString.self, NSNumber.self, HighScorePlayer.self], from: decodedData) as? [HighScorePlayer])
-            return decodedPlayers?.last?.points ?? -1
+            guard let decodedPlayers = decodedPlayers else { return -1 }
+            if decodedPlayers.count < 10 { return -1 }
+            return decodedPlayers.last?.points ?? -1
             
         }
         catch{

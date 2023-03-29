@@ -10,14 +10,19 @@ import UIKit
 class GameModeViewController: UIViewController,UITextFieldDelegate{
     let wordModel = WordModel()
     var counter: Counter?
+    var menuLevelButton: UIButton? = nil
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureTextfield()
+        configureApplicationNotifications()
+        APP_PLAYER.resetPlayer()
+    }
+    
     
     func configureApplicationNotifications(){
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: UIApplication.willEnterForegroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(applicationWentInToBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
-    }
-    
-    func configureStartNewGameButton(_ btn: UIButton){
-        btn.addTarget(self, action: #selector(showCountDownPopUp(_:)), for: .touchUpInside)
     }
     
     func configureTextfield(){
@@ -32,13 +37,12 @@ class GameModeViewController: UIViewController,UITextFieldDelegate{
     
     func evaluateAnswer(){ }
     
-    func resetForNewRound(userTypedWord: UITextField,wordToTypeLabel: UILabel,userPointslabel: UILabel){
+    func resetForNewRound(userTypedWord: UITextField,wordToTypeLabel: UILabel){
         wordToTypeLabel.layer.removeAllAnimations()
         let userTypedWord = getUserWrittenText(userTypedWord)
         let wordToType = getCurrentWordToType(wordToTypeLabel)
         let isCorrectAnswer = GameModel.evaluateLastWord(userTypedWord,wordToType)
         APP_PLAYER.updateScore(isCorrectAnswer)
-        userPointslabel.text = APP_PLAYER.getCurrentScore()
     }
     
     func updateUserPointsLabel(_ userPointslabel: UILabel){
@@ -57,19 +61,41 @@ class GameModeViewController: UIViewController,UITextFieldDelegate{
         return word
     }
     
-    func configureTopMenu(){
+    func configureTopMenu(btn:UIBarButtonItem){
+        guard let menuLevelButton = createButton() else { return }
         navigationItem.rightBarButtonItems = [
+            btn,
             UIBarButtonItem(
-                title: "HighScore",
-                style: .done,
-                target: self,
-                action: #selector(openHighScoreScreen)
-            ),
-            UIBarButtonItem(
-                customView:createButton(title: APP_PLAYER.level)
+                customView: menuLevelButton
             ),
         ]
         
+    }
+    
+    func createButton() -> UIButton? {
+        menuLevelButton = UIButton(frame: CGRect(x:0,y:0,width:100,height:30))
+        menuLevelButton?.setTitle(APP_PLAYER.level, for: .normal)
+        menuLevelButton?.backgroundColor = .lightGray
+        menuLevelButton?.layer.cornerRadius = 10
+        
+        let menuClosure = {(action: UIAction) in
+            self.menuLevelButton?.setTitle(action.title, for: .normal)
+            APP_PLAYER.level = action.title
+        }
+        var children = [UIAction]()
+        for level in GAME_LEVELS{
+            if APP_PLAYER.level == level{
+                children.append(UIAction(title: level, state: .on, handler: menuClosure))
+            }
+            else{
+                children.append(UIAction(title: level, state: .off, handler: menuClosure))
+            }
+        }
+        menuLevelButton?.menu = UIMenu(children: children)
+        menuLevelButton?.showsMenuAsPrimaryAction = true
+        menuLevelButton?.changesSelectionAsPrimaryAction = true
+        
+        return menuLevelButton
     }
     
     func showEndOfGamePopUp(){
@@ -80,22 +106,15 @@ class GameModeViewController: UIViewController,UITextFieldDelegate{
     func counterIsCounting() -> Bool {
         return counter != nil && counter!.isCounting
     }
- 
-    @objc
-    func applicationDidBecomeActive(notification: NSNotification) {
+    
+    func releaseCounter(){
+        counter?.stop()
+        counter = nil
     }
     
-    @objc
-    func applicationWentInToBackground(notification: NSNotification) {
-        
-    }
-    
-    override func didReceiveMemoryWarning() {
-        printAny("memory warning gamemode")
-    }
-    
-    deinit{
-        printAny("deinit gamemode viewcontroller ")
+    func releaseMenuLevelButton(){
+        menuLevelButton?.menu = nil
+        menuLevelButton = nil
     }
     
     @objc
@@ -107,12 +126,10 @@ class GameModeViewController: UIViewController,UITextFieldDelegate{
     }
     
     @objc
-    func showCountDownPopUp(_ btn: UIButton){
-        btn.isHidden = true
+    func loadWordsAndCountDown(){
         wordModel.loadWords()
         CounterPopupViewController.showPopup(parentVC: self)
     }
-    
     
     @objc
     override func onKeyboardShow(keyboardSize: CGRect){
@@ -121,5 +138,20 @@ class GameModeViewController: UIViewController,UITextFieldDelegate{
     
     override func keyboardWillHide(sender: NSNotification){
         updateConstraintValue(id: "bottomConstraintForUserInput", value: -10.0)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        releaseCounter()
+        releaseMenuLevelButton()
+    }
+    
+    @objc
+    func applicationDidBecomeActive(notification: NSNotification) {
+    }
+    
+    @objc
+    func applicationWentInToBackground(notification: NSNotification) {
+        
     }
 }

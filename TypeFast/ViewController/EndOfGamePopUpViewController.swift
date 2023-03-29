@@ -26,7 +26,7 @@ class EndOfGamePopupViewController: UIViewController,UITextFieldDelegate, UITabl
     @IBOutlet var dialogBoxView: UIView!
   
     private var gameModel: GameModel? = nil
-    private var pointsToMakeBoard:Int32 { return SharedPreference.getLastPlayerFromTable(APP_PLAYER.level)}
+    private var pointsToMakeBoard:Int32 { return SharedPreference.getMinimumScoreToMakeHighScoreTable(APP_PLAYER.level)}
     
     override func viewDidLoad() {
         super.viewDidLoad()

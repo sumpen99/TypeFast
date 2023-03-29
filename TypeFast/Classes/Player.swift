@@ -7,7 +7,7 @@
 
 class Player{
     var name: String = ""
-    var level: String = ""
+    var level: String = "Easy"
     var gameMode: String = ""
     var points: Int = 0
     var numTypedWords: Int = 0
@@ -20,18 +20,24 @@ class Player{
     }
     
     func updateScore(_ answerIsCorrect: Bool){
-        if answerIsCorrect {
+        /*if answerIsCorrect {
             points += 1
         }
         else{
             let points = max(0,points-1)
             self.points = points
-        }
+        }*/
+        points += answerIsCorrect ? 1 : 0
         numTypedWords += 1
     }
     
     func getCurrentScore() -> String{
         return "\(points)/\(numTypedWords)"
+    }
+    
+    func getCurrentScore() -> Double{
+        if numTypedWords == 0 { return 0.0 }
+        return Double(points)/Double(numTypedWords)
     }
     
     func resetPlayer(){

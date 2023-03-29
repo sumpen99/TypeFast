@@ -132,15 +132,6 @@ extension UIColor {
 
 extension UIViewController {
     
-    func createButton(title:String) -> UIButton{
-        let menuButton = UIButton(frame: CGRect(x:0,y:0,width:100,height:30))
-        //menuButton.addTarget(self, action: #selector(tapFunction), for: .touchUpInside)
-        menuButton.setTitle(title, for: .normal)
-        menuButton.backgroundColor = .lightGray
-        menuButton.layer.cornerRadius = 10
-        return menuButton
-    }
-    
     func addKeyboardResponder(){
         NotificationCenter.default.addObserver(
             self,
