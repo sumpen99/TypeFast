@@ -11,6 +11,7 @@ class Player{
     var gameMode: String = ""
     var points: Int = 0
     var numTypedWords: Int = 0
+    var preferredAnswerTime:Double = 7.0
     
     func setNewName(_ name: String?) -> Bool{
         guard let name = name else { return false }
@@ -38,6 +39,13 @@ class Player{
     func getCurrentScore() -> Double{
         if numTypedWords == 0 { return 0.0 }
         return Double(points)/Double(numTypedWords)
+    }
+    
+    func getCurrentDoubleScore() -> String{
+        let value: Double = getCurrentScore()
+        if value == 0 { return "0.0%" }
+        let result = value * 100
+        return String(format: "%.1f", result) + "%"
     }
     
     func resetPlayer(){

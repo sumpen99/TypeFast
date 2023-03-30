@@ -69,8 +69,7 @@ class Counter{
     
     private func initTimer(){
         let action: (Timer)->Void = { [weak self] timer in
-            guard let strongSelf = self
-            else { return }
+            guard let strongSelf = self else { return }
             strongSelf.current -= strongSelf.step
             strongSelf.timeUpdated(round(strongSelf.current))
         }

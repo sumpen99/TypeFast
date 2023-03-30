@@ -54,6 +54,10 @@ class GameModel: NSObject,UITableViewDataSource{
         return userTypedWord == wordToType
     }
     
+    static func clearSelf(){
+        GameModel.wordsInLastSession.removeAll()
+    }
+    
     func reset(){
         GameModel.wordsInLastSession.removeAll()
         tableView = nil

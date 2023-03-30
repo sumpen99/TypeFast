@@ -8,17 +8,18 @@
 import UIKit
 
 class GameModeViewController: UIViewController,UITextFieldDelegate{
-    let wordModel = WordModel()
+    var wordModel = WordModel()
     var counter: Counter?
     var menuLevelButton: UIButton? = nil
+    var menuRightButton: UIBarButtonItem? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTextfield()
         configureApplicationNotifications()
         APP_PLAYER.resetPlayer()
+        GameModel.clearSelf()
     }
-    
     
     func configureApplicationNotifications(){
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: UIApplication.willEnterForegroundNotification, object: nil)
@@ -34,8 +35,6 @@ class GameModeViewController: UIViewController,UITextFieldDelegate{
         evaluateAnswer()
         return true
     }
-    
-    func evaluateAnswer(){ }
     
     func resetForNewRound(userTypedWord: UITextField,wordToTypeLabel: UILabel){
         wordToTypeLabel.layer.removeAllAnimations()
@@ -61,10 +60,11 @@ class GameModeViewController: UIViewController,UITextFieldDelegate{
         return word
     }
     
-    func configureTopMenu(btn:UIBarButtonItem){
-        guard let menuLevelButton = createButton() else { return }
+    func configureTopMenu(btn:UIBarButtonItem?){
+        guard let menuRightButton = btn,
+        let menuLevelButton = createLevelButton() else { return }
         navigationItem.rightBarButtonItems = [
-            btn,
+            menuRightButton,
             UIBarButtonItem(
                 customView: menuLevelButton
             ),
@@ -72,14 +72,15 @@ class GameModeViewController: UIViewController,UITextFieldDelegate{
         
     }
     
-    func createButton() -> UIButton? {
+    func createLevelButton() -> UIButton? {
         menuLevelButton = UIButton(frame: CGRect(x:0,y:0,width:100,height:30))
         menuLevelButton?.setTitle(APP_PLAYER.level, for: .normal)
         menuLevelButton?.backgroundColor = .lightGray
         menuLevelButton?.layer.cornerRadius = 10
         
-        let menuClosure = {(action: UIAction) in
-            self.menuLevelButton?.setTitle(action.title, for: .normal)
+        let menuClosure = {[weak self] (action: UIAction) in
+            guard let strongSelf = self else { return }
+            strongSelf.menuLevelButton?.setTitle(action.title, for: .normal)
             APP_PLAYER.level = action.title
         }
         var children = [UIAction]()
@@ -112,9 +113,9 @@ class GameModeViewController: UIViewController,UITextFieldDelegate{
         counter = nil
     }
     
-    func releaseMenuLevelButton(){
-        menuLevelButton?.menu = nil
-        menuLevelButton = nil
+    func removeAnimations(wordToTypeLabel:UILabel? = nil,pulseLabel:UIImageView? = nil){
+        wordToTypeLabel?.layer.removeAllAnimations()
+        pulseLabel?.layer.removeAllAnimations()
     }
     
     @objc
@@ -142,16 +143,22 @@ class GameModeViewController: UIViewController,UITextFieldDelegate{
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        releaseCounter()
-        releaseMenuLevelButton()
+        //releaseCounter()
     }
     
     @objc
-    func applicationDidBecomeActive(notification: NSNotification) {
+    func applicationDidBecomeActive(notification: NSNotification){
+        guard let counter = counter else{ return }
+        if counter.resume(){
+            animateWordToType()
+        }
     }
     
     @objc
     func applicationWentInToBackground(notification: NSNotification) {
-        
+        counter?.paus()
     }
+    
+    func evaluateAnswer(){ }
+    func animateWordToType(){ }
 }

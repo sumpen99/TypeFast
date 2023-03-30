@@ -27,8 +27,9 @@ class CounterPopupViewController: UIViewController{
     }
     
     private func configureCounter(){
-        counter = Counter(to: 0,from: 3,step: 1){ currentTime in
-            self.updateTimerLabel(withValue: Int(currentTime))
+        counter = Counter(to: 0,from: 3,step: 1){ [weak self] currentTime in
+            guard let strongSelf = self else { return }
+            strongSelf.updateTimerLabel(withValue: Int(currentTime))
         }
         counter?.toggle()
     }
@@ -42,6 +43,7 @@ class CounterPopupViewController: UIViewController{
     
     private func closePopup(){
         counterLabel.text = "GO"
+        counter?.stop()
         counter = nil
         delegate?.counterPopupIsDismissed()
         delegate = nil
@@ -53,16 +55,6 @@ class CounterPopupViewController: UIViewController{
         modalPresentationStyle = .custom
         //modalPresentationStyle = .formSheet
         modalTransitionStyle = .crossDissolve
-    }
-    
-    deinit{
-        printAny("deinit popup counter")
-        counter?.stop()
-        counter = nil
-    }
-    
-    override func didReceiveMemoryWarning() {
-        printAny("memory warning counter")
     }
     
     static func showPopup(parentVC: UIViewController){

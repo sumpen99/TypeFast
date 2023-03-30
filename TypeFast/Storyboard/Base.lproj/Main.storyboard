@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -206,12 +207,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rwr-8D-XbF">
-                                <rect key="frame" x="0.0" y="153" width="393" height="0.0"/>
+                                <rect key="frame" x="0.0" y="173" width="393" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="48"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="bottom" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XNb-Cf-sab">
+                            <textField hidden="YES" opaque="NO" contentMode="bottom" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XNb-Cf-sab">
                                 <rect key="frame" x="10" y="748" width="373" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="CIZ-mB-wZQ"/>
@@ -219,12 +220,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jB9-TQ-xox" customClass="CircularProgressView" customModule="TypeFast" customModuleProvider="target">
-                                <rect key="frame" x="96.666666666666686" y="153" width="200" height="200"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jB9-TQ-xox" customClass="CircularProgressView" customModule="TypeFast" customModuleProvider="target">
+                                <rect key="frame" x="96.666666666666686" y="173" width="200" height="200"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQ7-bD-EFL">
                                         <rect key="frame" x="99.999999999999986" y="100" width="0.0" height="0.0"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -237,40 +238,60 @@
                                     <constraint firstItem="tQ7-bD-EFL" firstAttribute="centerX" secondItem="jB9-TQ-xox" secondAttribute="centerX" id="vam-1a-lps"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVg-Jm-Hfe">
-                                <rect key="frame" x="0.0" y="103" width="393" height="50"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lxD-ZE-Whz">
+                                <rect key="frame" x="10" y="103" width="373" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1U2-uR-ZzG">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbL-ET-CDT">
+                                        <rect key="frame" x="0.0" y="0.0" width="119" height="50"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Stop  ">
+                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseBackgroundColor" red="0.85098039219999999" green="0.70980392160000005" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7c-EZ-TAg">
+                                        <rect key="frame" x="127" y="0.0" width="119" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BqG-u0-emf">
+                                        <rect key="frame" x="254" y="0.0" width="119" height="50"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Start">
+                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseBackgroundColor" red="0.85098039219999999" green="0.70980392160000005" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </buttonConfiguration>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="tRI-BQ-aBr"/>
+                                    <constraint firstAttribute="height" constant="50" id="2wD-SZ-qKo"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RY2-O1-JUD"/>
                         <color key="backgroundColor" red="0.98823529409999999" green="0.72549019609999998" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="aVg-Jm-Hfe" firstAttribute="leading" secondItem="RY2-O1-JUD" secondAttribute="leading" id="1gj-6w-xpG"/>
                             <constraint firstItem="jB9-TQ-xox" firstAttribute="top" secondItem="Rwr-8D-XbF" secondAttribute="bottom" id="3zs-tJ-MI1"/>
                             <constraint firstItem="Rwr-8D-XbF" firstAttribute="leading" secondItem="RY2-O1-JUD" secondAttribute="leading" id="8O2-fi-85E"/>
                             <constraint firstItem="XNb-Cf-sab" firstAttribute="leading" secondItem="RY2-O1-JUD" secondAttribute="leading" constant="10" id="9bT-ag-Q0Q"/>
+                            <constraint firstItem="lxD-ZE-Whz" firstAttribute="top" secondItem="RY2-O1-JUD" secondAttribute="top" id="HYC-Pr-96c"/>
+                            <constraint firstItem="RY2-O1-JUD" firstAttribute="trailing" secondItem="lxD-ZE-Whz" secondAttribute="trailing" constant="10" id="IPO-rI-4B1"/>
                             <constraint firstItem="XNb-Cf-sab" firstAttribute="bottom" secondItem="RY2-O1-JUD" secondAttribute="bottom" constant="-10" identifier="bottomConstraintForUserInput" id="JVC-FT-mf2"/>
-                            <constraint firstItem="aVg-Jm-Hfe" firstAttribute="top" secondItem="RY2-O1-JUD" secondAttribute="top" id="O0g-H6-1lT"/>
+                            <constraint firstItem="Rwr-8D-XbF" firstAttribute="top" secondItem="lxD-ZE-Whz" secondAttribute="bottom" constant="20" id="K61-oI-J79"/>
+                            <constraint firstItem="lxD-ZE-Whz" firstAttribute="leading" secondItem="RY2-O1-JUD" secondAttribute="leading" constant="10" id="Yyc-Fx-dbz"/>
                             <constraint firstItem="RY2-O1-JUD" firstAttribute="trailing" secondItem="Rwr-8D-XbF" secondAttribute="trailing" id="eOb-87-f0Q"/>
                             <constraint firstItem="jB9-TQ-xox" firstAttribute="centerX" secondItem="X42-OZ-ipf" secondAttribute="centerX" id="lvJ-A1-lAN"/>
-                            <constraint firstItem="Rwr-8D-XbF" firstAttribute="top" secondItem="aVg-Jm-Hfe" secondAttribute="bottom" id="lwK-va-iQ5"/>
                             <constraint firstItem="RY2-O1-JUD" firstAttribute="trailing" secondItem="XNb-Cf-sab" secondAttribute="trailing" constant="10" id="o7I-Nq-8kT"/>
-                            <constraint firstItem="RY2-O1-JUD" firstAttribute="trailing" secondItem="aVg-Jm-Hfe" secondAttribute="trailing" id="wWR-hL-Vv0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nwN-zH-H9O"/>
                     <connections>
                         <outlet property="procentLabel" destination="tQ7-bD-EFL" id="4hO-Qd-zdk"/>
                         <outlet property="progressView" destination="jB9-TQ-xox" id="kKK-e7-yJR"/>
+                        <outlet property="startButton" destination="BqG-u0-emf" id="Ofg-cQ-bsS"/>
+                        <outlet property="stopButton" destination="nbL-ET-CDT" id="HHd-l3-VJu"/>
+                        <outlet property="timerLabel" destination="l7c-EZ-TAg" id="0nz-gc-v69"/>
                         <outlet property="userInputTextView" destination="XNb-Cf-sab" id="ZB5-SD-3qj"/>
                         <outlet property="wordToTypeLabel" destination="Rwr-8D-XbF" id="BYX-nN-dX0"/>
                     </connections>
@@ -402,7 +423,7 @@
                                             <constraint firstAttribute="width" constant="50" id="UDs-b7-GLM"/>
                                         </constraints>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <buttonConfiguration key="configuration" style="filled" image="arrow.backward" catalog="system">
+                                        <buttonConfiguration key="configuration" style="filled" image="chevron.backward" catalog="system">
                                             <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
@@ -581,7 +602,7 @@
                                             <constraint firstAttribute="width" constant="50" id="wpo-mY-myS"/>
                                         </constraints>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <buttonConfiguration key="configuration" style="filled" image="arrow.backward" catalog="system">
+                                        <buttonConfiguration key="configuration" style="filled" image="chevron.backward" catalog="system">
                                             <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
                                     </button>
@@ -659,9 +680,9 @@
     </scenes>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
-        <image name="arrow.backward" catalog="system" width="128" height="95"/>
         <image name="arrowshape.turn.up.left" catalog="system" width="128" height="104"/>
         <image name="arrowshape.turn.up.right" catalog="system" width="128" height="104"/>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <image name="sparkle" catalog="system" width="128" height="119"/>
         <image name="typewriter" width="512" height="512"/>
         <image name="xmark" catalog="system" width="128" height="113"/>

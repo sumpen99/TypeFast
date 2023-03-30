@@ -109,6 +109,10 @@ class SharedPreference {
         return userDefault.object(forKey: key) == nil ? 0 : userDefault.integer(forKey: key)
     }
     
+    static func getDoubleValue(key : String) -> Double{
+        return userDefault.object(forKey: key) == nil ? 0.0 : userDefault.double(forKey: key)
+    }
+    
     static func getStringValue(key : String) -> String{
         return userDefault.object(forKey: key) == nil ? "" : userDefault.string(forKey: key)!
     }

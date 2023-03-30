@@ -23,7 +23,6 @@ func getCurrentDate() -> String{
 }
 
 func getCorrectOrderOfControllers() -> [String]{
-    printAny("hepp")
     switch APP_PLAYER.level {
         case "Easy" :
             return ["Easy","Medium","Hard","Expert"]
@@ -36,11 +35,13 @@ func getCorrectOrderOfControllers() -> [String]{
     }
 }
 
-let TOTAL_GAME_TIME = 15
-let TOTAL_ANSWER_TIME = 7.0
+let TOTAL_GAME_TIME = 60
+let INFINITE_GAME_TIME = 999
+let TOTAL_ANSWER_TIME = 10.0
 let WORDS_BUFFER = 100
 let MAX_HIGHSCORE_PLAYERS = 10
 
+let USER_RESPONSE_TIME = "userResponseTime"
 let GAME_LEVELS = ["Easy","Medium","Hard","Expert"]
 
 let APP_PLAYER = Player()

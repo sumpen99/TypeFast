@@ -33,13 +33,16 @@ class SixtyModeViewController : GameModeViewController,CounterPopUpDelegate,EndO
     }
     
     private func configureCounter(){
-        counter = Counter(to: 0,from: Double(TOTAL_GAME_TIME),step: 1){ currentTime in
-            self.updateTimeLeftLabel(withValue: Int(currentTime))
+        counter = Counter(to: 0,
+                          from: Double(TOTAL_GAME_TIME),
+                          step: 1){ [weak self] currentTime in
+            guard let strongSelf = self else { return }
+            strongSelf.updateTimeLeftLabel(withValue: Int(currentTime))
         }
         counter?.toggle()
     }
     
-    private func animateWordToType(){
+    override func animateWordToType(){
         wordToTypeLabel.text = wordModel.getNextWord()
         wordToTypeLabel.fadeOut(){ [weak self] finished in
             guard let strongSelf = self else { return }
@@ -67,7 +70,7 @@ class SixtyModeViewController : GameModeViewController,CounterPopUpDelegate,EndO
     
     private func stopCurrentGame(){
         timeLeftLabel.clear()
-        removeAnimations()
+        removeAnimations(wordToTypeLabel: wordToTypeLabel,pulseLabel: pulseLabel)
         userInputTextview.unActivate()
         counter?.stop()
         counter = nil
@@ -95,11 +98,6 @@ class SixtyModeViewController : GameModeViewController,CounterPopUpDelegate,EndO
         animateWordToType()
     }
     
-    private func removeAnimations(){
-        wordToTypeLabel.layer.removeAllAnimations()
-        pulseLabel.layer.removeAllAnimations()
-    }
-    
     @objc
     func showCountDownPopUp(_ btn: UIButton){
         btn.isHidden = true
@@ -108,27 +106,12 @@ class SixtyModeViewController : GameModeViewController,CounterPopUpDelegate,EndO
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        removeAnimations()
-        printAny("sixty mode view is gone")
+        removeAnimations(wordToTypeLabel: wordToTypeLabel,pulseLabel: pulseLabel)
     }
     
-    override func applicationDidBecomeActive(notification: NSNotification){
-        guard let counter = counter else{ return }
-        if counter.resume(){
-            animateWordToType()
-        }
-    }
-    
-    override func applicationWentInToBackground(notification: NSNotification) {
-        counter?.paus()
-    }
     
     deinit{
         printAny("deinit sixty viewcontroller")
-    }
-    
-    override func didReceiveMemoryWarning() {
-        printAny("memory warning sixty")
     }
     
 }
