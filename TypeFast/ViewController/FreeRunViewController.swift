@@ -192,9 +192,4 @@ class FreeRunViewController: GameModeViewController,CounterPopUpDelegate{
         
     }
     
-    deinit{
-        printAny("deinit free run viewcontroller")
-    }
-    
-    
 }

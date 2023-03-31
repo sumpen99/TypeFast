@@ -42,8 +42,4 @@ class HighScorePageController: UIPageViewController{
         }
     }
     
-    deinit{
-        printAny("deinit highscore page controller")
-    }
-    
 }

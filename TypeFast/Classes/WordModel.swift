@@ -36,8 +36,5 @@ class WordModel{
         count = 0
         loadWords()
     }
-    
-    deinit{
-        printAny("deinit wordmodel")
-    }
+  
 }

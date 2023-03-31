@@ -8,8 +8,6 @@
 import UIKit
 
 class LaunchScreenViewController: UIViewController{
-    @IBOutlet weak var gameModePickerView: UIPickerView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

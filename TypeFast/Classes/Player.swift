@@ -52,8 +52,5 @@ class Player{
         points = 0
         numTypedWords = 0
     }
-    
-    deinit{
-        printAny("deinit player")
-    }
+   
 }

@@ -141,11 +141,6 @@ class GameModeViewController: UIViewController,UITextFieldDelegate{
         updateConstraintValue(id: "bottomConstraintForUserInput", value: -10.0)
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        //releaseCounter()
-    }
-    
     @objc
     func applicationDidBecomeActive(notification: NSNotification){
         guard let counter = counter else{ return }

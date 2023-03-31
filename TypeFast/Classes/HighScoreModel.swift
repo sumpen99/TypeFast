@@ -32,11 +32,6 @@ class HighScoreModel: NSObject,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: HighScoreCell = self.tableView?.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! HighScoreCell
-        //let cellValues = getNextCellValues(index: indexPath.row)
-        //cell.nameLabel.text = cellValues.0
-        //cell.positionLabel.text = cellValues.1
-        //cell.wordImageView.image = cellValues.2
-        //cell.wordImageView.tintColor = cellValues.3
         cell.positionLabel.text = "\(indexPath.row + 1)"
         cell.nameLabel.text = currentTable[indexPath.row].name
         cell.scoreLabel.text = "\(currentTable[indexPath.row].points)"
@@ -46,9 +41,4 @@ class HighScoreModel: NSObject,UITableViewDataSource {
     func reset(){
         tableView = nil
     }
-    
-    deinit{
-        printAny("deinit highscoremodel")
-    }
-    
 }

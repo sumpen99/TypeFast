@@ -31,11 +31,6 @@ class Counter{
         self.timeUpdated = timeUpdated
     }
     
-    deinit{
-        printAny("deinit clock")
-        deinitTimer()
-    }
-    
     func toggle(){
         guard timer != nil else{
             initTimer()
@@ -81,5 +76,9 @@ class Counter{
     private func deinitTimer(){
         timer?.invalidate()
         timer = nil
+    }
+    
+    deinit{
+        deinitTimer()
     }
 }

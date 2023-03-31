@@ -109,9 +109,4 @@ class SixtyModeViewController : GameModeViewController,CounterPopUpDelegate,EndO
         removeAnimations(wordToTypeLabel: wordToTypeLabel,pulseLabel: pulseLabel)
     }
     
-    
-    deinit{
-        printAny("deinit sixty viewcontroller")
-    }
-    
 }

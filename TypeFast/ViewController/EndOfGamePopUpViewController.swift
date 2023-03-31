@@ -61,7 +61,7 @@ class EndOfGamePopupViewController: UIViewController,UITextFieldDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        printAny("you tapped cell \(indexPath.row)")
+        //printAny("you tapped cell \(indexPath.row)")
     }
     
     private func configureBackButton(){

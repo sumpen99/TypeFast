@@ -45,32 +45,3 @@ let USER_RESPONSE_TIME = "userResponseTime"
 let GAME_LEVELS = ["Easy","Medium","Hard","Expert"]
 
 let APP_PLAYER = Player()
-
-func clearAllTestData(){
-    for level in GAME_LEVELS{
-        SharedPreference.removePlayersFromTable(level)
-    }
-}
-
-func populateHighScoreWithTestData(){
-    let players = [
-    HighScorePlayer(name: "Fredrik", date: getCurrentDate(), points: 10),
-    HighScorePlayer(name: "Johan", date: getCurrentDate(), points: 11),
-    HighScorePlayer(name: "Daniel", date: getCurrentDate(), points: 12),
-    HighScorePlayer(name: "Erik", date: getCurrentDate(), points: 9),
-    HighScorePlayer(name: "Johanna", date: getCurrentDate(), points: 20),
-    HighScorePlayer(name: "Kristoffer", date: getCurrentDate(), points: 1),
-    HighScorePlayer(name: "Sara", date: getCurrentDate(), points: 2),
-    HighScorePlayer(name: "Erica", date: getCurrentDate(), points: 15),
-    HighScorePlayer(name: "Kristin", date: getCurrentDate(), points: 4),
-    HighScorePlayer(name: "Sofie", date: getCurrentDate(), points: 3),]
-    
-    for level in GAME_LEVELS{
-        for player in players{
-            let name = player.name
-            player.name += " ( \(level) )"
-            SharedPreference.writeNewPlayerToTable(level, player: player)
-            player.name = name
-        }
-    }
-}

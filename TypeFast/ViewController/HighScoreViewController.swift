@@ -33,9 +33,6 @@ class HighScoreViewController: UIViewController{
         highScoreModel = HighScoreModel()
         highScoreModel?.collectData(level: self.level)
         highScoreModel?.setTableView(tableView: self.tableView)
-        //gameModel = GameModel()
-        //gameModel?.setTableView(tableView: self.tableView)
-        //tableView.delegate = self
     }
     
 }

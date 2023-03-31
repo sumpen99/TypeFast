@@ -13,7 +13,6 @@
 		7D070C2B29CEF139004BD025 /* wordsHard.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7D070C2829CEF139004BD025 /* wordsHard.txt */; };
 		7D070C2C29CEF139004BD025 /* wordsMedium.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7D070C2929CEF139004BD025 /* wordsMedium.txt */; };
 		7D070C2D29CEF139004BD025 /* wordsExpert.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7D070C2A29CEF139004BD025 /* wordsExpert.txt */; };
-		7D070C2F29CEF578004BD025 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D070C2E29CEF578004BD025 /* Word.swift */; };
 		7D070C3129CEF5FE004BD025 /* FileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D070C3029CEF5FE004BD025 /* FileHandler.swift */; };
 		7D070C3329CF0F9C004BD025 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D070C3229CF0F9C004BD025 /* Player.swift */; };
 		7D070C3729CF1FB5004BD025 /* CounterPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D070C3629CF1FB5004BD025 /* CounterPopUpViewController.swift */; };
@@ -67,7 +66,6 @@
 		7D070C2829CEF139004BD025 /* wordsHard.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wordsHard.txt; sourceTree = "<group>"; };
 		7D070C2929CEF139004BD025 /* wordsMedium.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wordsMedium.txt; sourceTree = "<group>"; };
 		7D070C2A29CEF139004BD025 /* wordsExpert.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wordsExpert.txt; sourceTree = "<group>"; };
-		7D070C2E29CEF578004BD025 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		7D070C3029CEF5FE004BD025 /* FileHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHandler.swift; sourceTree = "<group>"; };
 		7D070C3229CF0F9C004BD025 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		7D070C3629CF1FB5004BD025 /* CounterPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterPopUpViewController.swift; sourceTree = "<group>"; };
@@ -141,14 +139,6 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		7D070C1E29CEE593004BD025 /* Struct */ = {
-			isa = PBXGroup;
-			children = (
-				7D070C2E29CEF578004BD025 /* Word.swift */,
-			);
-			path = Struct;
-			sourceTree = "<group>";
-		};
 		7D070C2529CEF092004BD025 /* Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,7 +183,6 @@
 			isa = PBXGroup;
 			children = (
 				7D21913829D04810007FEEA0 /* Global */,
-				7D070C1E29CEE593004BD025 /* Struct */,
 				7D070C1729CCB473004BD025 /* Classes */,
 				7DB0707E29CA19410077929B /* View */,
 				7DB0707729CA05B60077929B /* Extension */,
@@ -409,7 +398,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D070C2F29CEF578004BD025 /* Word.swift in Sources */,
 				7D070C3729CF1FB5004BD025 /* CounterPopUpViewController.swift in Sources */,
 				7D21914C29D1E5E9007FEEA0 /* HighScoreCell.swift in Sources */,
 				7D21915029D215D7007FEEA0 /* HighScorePlayer.swift in Sources */,

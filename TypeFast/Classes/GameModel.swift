@@ -63,8 +63,4 @@ class GameModel: NSObject,UITableViewDataSource{
         tableView = nil
     }
     
-    deinit{
-        printAny("deinit gamemodel")
-    }
-    
 }
